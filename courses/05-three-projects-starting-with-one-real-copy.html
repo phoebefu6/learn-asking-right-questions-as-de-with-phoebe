@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Session 5 of 6. Turning the operations director's answers into a tree with her test at the top, pruning it to three candidate projects that each start by declaring one copy real, scoring them with a rule written above the grid, and shaping the winner into a four-outlet pilot with a partner, a test and a date.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="Three projects, starting with one real copy - learn asking the right questions as a data engineer with phoebe">
+<meta property="og:description" content="Session 5 of 6. Her answers as a tree, three candidates that each declare one copy real before anything moves, and a pilot in four outlets with the auditor's written answer as the test.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-asking-right-questions-as-de-with-phoebe/courses/05-three-projects-starting-with-one-real-copy.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-asking-right-questions-as-de-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Three projects, starting with one real copy - learn asking the right questions as a data engineer with phoebe">
+<meta name="twitter:description" content="Session 5 of 6. Declare the copy, then move it.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-asking-right-questions-as-de-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Session 5 · Three projects, starting with one real copy - learn asking the right questions as a data engineer with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-asking-right-questions-as-de-with-phoebe</a> / Session 5 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Asking the Right Questions as a Data Engineer with Phoebe · Session 5 of 6</div>
+    <h1>Three projects, starting with <span class="accent">one real copy</span></h1>
+    <p class="sub">You walked out of the meeting with a page of her answers: a two percent gap every month and an auditor who has asked about it in writing, 38 CSV files pasted by hand every Monday, three stock spreadsheets, product codes that differ by country, one admin login that is about to leave. That page is not a project. Left alone it becomes the thing an engineer reaches for first, a pipeline that pulls every system into one place, and a pipeline built on copies nobody has declared real moves the disagreement faster instead of settling it. Tonight turns the answers into a tree with her test at the top, prunes the tree to three candidate projects that each begin by declaring one copy real, scores them with a rule written where she can argue with it, and shapes the winner into a pilot small enough to start on Monday with no budget. Doors 1 and 6, outcome and success, choose; door 4, data state, decides what each candidate has to settle first. The corridor of six is in <a href="https://phoebefu6.github.io/learn-asking-right-questions-as-da-with-phoebe/courses/01-why-the-gap-and-the-six-doors.html">the shared session 1</a>.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Core</span>
+      <span class="chip audience">Data engineers, and anyone asked to "connect the systems"</span>
+      <span class="chip audience">No code. A pen.</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · The tree, the three, the pilot</span>
+      <span class="a3" style="flex:5">18-40 · Build-along: your tree, your three, your first copy</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we start</h2>
+    </div>
+    <p class="lede">Sessions 1 to 4 were about getting facts out of a person who did not know she had them. Adeline Tan, operations director of Harbourline, a constructed chain of 38 pharmacy and clinic outlets in Singapore and Malaysia, opened with "Our numbers never match. Finance says one thing, the POS says another." On session 3's bench the order tuned for an engineer got 17 of her 24 facts in 45 minutes. The danger now is the opposite of the first meeting's. Then, you had too little; now you have a page of pains and a strong pull toward the one you know how to build. For an engineer that pull has a name, "connect the systems", and it is the exact request that stalled at Harbourline two years ago. The move tonight is to let her test choose, to make every candidate say which copy it treats as real before it moves a single row, and to write the choosing down so she can see it and disagree.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+      <span class="pill">★ Build-along = write it yourself</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> One page for a request you actually hold: her test in her words at the top of a tree, the pains she named as its branches, three candidate projects written in six lines each (what, first step, who, needs, which copy is declared real, whose login it runs on), a scoring grid with the combination rule written above it, and a five-line pilot with a scope, a partner, a test and a date. Session 6 folds that page into the brief you send her within 24 hours.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers her answers as a tree</span>
+      <h2>Her test on top, the copies underneath</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">Teresa Torres's opportunity solution tree, reported here from her 2021 book, has four layers: a desired outcome at the top, the opportunities underneath it, solutions under the opportunities, and assumption tests under the solutions. An opportunity is a pain the customer voiced; a solution is a thing you could build; the outcome is what would be different if the pain went away. Adeline's meeting gave you all three layers in her words and in the wrong order, and the engineer's habit makes the order worse, because the solution layer is the one you think in. The tree puts her test back on top, where every pipeline, script and page underneath can be checked against it.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 362" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn opportunity solution tree built from Harbourline's facts. At the top, a teal outcome box in the operations director's own words: the auditor stops asking, and Priya's Monday takes one hour instead of six. Under it, six hatched opportunity boxes, the pains she named: a two percent gap each month that the auditor wrote about, finance booking its own number and arguing afterwards, 38 CSV files pasted by hand for six hours every Monday, silent fixes by hand with no record, three stock sheets with the one treated as real on Priya's laptop, and product codes that differ between Singapore and Malaysia. Under the strongest opportunity, the two percent gap, three white solution boxes: a written bridge naming each timing gap, a nightly pipeline putting POS and ledger in one table, and a reconciliation tool bought from the Q1 budget. At the right, a separate box marks the upside-down tree with a pipeline on top.">
+        <defs>
+          <filter id="s5aSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="53" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="s5aHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#9A3412" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="s5aAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2A1A12" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .s5aH { font: 800 12px Inter, sans-serif; fill: #2A1A12; }
+          .s5aL { font: 600 12px Inter, sans-serif; fill: #2A1A12; }
+          .s5aS { font: 400 11px Inter, sans-serif; fill: #6B5448; }
+          .s5aB { font: 800 11px Inter, sans-serif; fill: #084C4C; }
+          .s5aA { font: 700 11px Inter, sans-serif; fill: #9A3412; letter-spacing: .05em; }
+          .s5aN { font: 400 12px Inter, sans-serif; fill: #6B5448; }
+        </style>
+
+        <text class="s5aH" x="30" y="26">HER TEST ON TOP, THE PAINS UNDER IT</text>
+        <text class="s5aS" x="330" y="26">outcome in her words · pains as she said them · things to build come last</text>
+
+        <g filter="url(#s5aSk)" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Adeline, the doodle anchor -->
+          <circle cx="196" cy="66" r="12"/>
+          <path d="M176 100 C182 82 210 82 216 100"/>
+          <!-- the outcome box, the one thing the figure is about -->
+          <rect x="236" y="46" width="410" height="58" rx="8" transform="rotate(-0.4 441 75)" fill="#E4F3F3" stroke="#0E6B6B"/>
+          <!-- trunk from outcome to the opportunity rail -->
+          <path d="M441 106 L441 132"/>
+          <path d="M94 132 L784 132" stroke="#E2CFC3"/>
+          <path d="M94 132 L94 150 M232 132 L232 150 M370 132 L370 150 M508 132 L508 150 M646 132 L646 150 M784 132 L784 150"/>
+          <!-- six opportunity boxes, 128 wide, 10 gap, from x=30 -->
+          <rect x="30" y="150" width="128" height="72" rx="6" transform="rotate(-0.6 94 186)" fill="url(#s5aHc)" stroke-width="2.6"/>
+          <rect x="168" y="150" width="128" height="72" rx="6" transform="rotate(0.5 232 186)" fill="url(#s5aHc)"/>
+          <rect x="306" y="150" width="128" height="72" rx="6" transform="rotate(-0.4 370 186)" fill="url(#s5aHc)"/>
+          <rect x="444" y="150" width="128" height="72" rx="6" transform="rotate(0.6 508 186)" fill="url(#s5aHc)"/>
+          <rect x="582" y="150" width="128" height="72" rx="6" transform="rotate(-0.5 646 186)" fill="url(#s5aHc)"/>
+          <rect x="720" y="150" width="128" height="72" rx="6" transform="rotate(0.4 784 186)" fill="url(#s5aHc)"/>
+          <!-- branches from the strongest opportunity to three solutions -->
+          <path d="M94 224 L94 250"/>
+          <path d="M94 250 L530 250" stroke="#E2CFC3"/>
+          <path d="M130 250 L130 264 M330 250 L330 264 M530 250 L530 264"/>
+          <rect x="36" y="264" width="188" height="50" rx="6" transform="rotate(-0.5 130 289)" fill="#FFFFFF"/>
+          <rect x="236" y="264" width="188" height="50" rx="6" transform="rotate(0.4 330 289)" fill="#FFFFFF"/>
+          <rect x="436" y="264" width="188" height="50" rx="6" transform="rotate(-0.3 530 289)" fill="#FFFFFF"/>
+          <!-- the wrong tree, a separate box on the right -->
+          <rect x="690" y="264" width="160" height="50" rx="6" transform="rotate(0.5 770 289)" fill="#FDF4EE" stroke="#E2CFC3"/>
+        </g>
+
+        <text class="s5aS" x="196" y="118" text-anchor="middle">Adeline</text>
+        <text class="s5aB" x="250" y="66">OUTCOME, in her words</text>
+        <text class="s5aS" x="250" y="82">"the auditor stops asking, and Priya's Monday takes</text>
+        <text class="s5aS" x="250" y="96">one hour instead of six"</text>
+
+        <text class="s5aA" x="460" y="126">OPPORTUNITIES: THE PAINS SHE NAMED</text>
+
+        <text class="s5aB" x="40" y="170">two percent gap</text>
+        <text class="s5aB" x="40" y="185">each month; the</text>
+        <text class="s5aB" x="40" y="200">auditor wrote</text>
+        <text class="s5aL" x="178" y="170">finance books</text>
+        <text class="s5aL" x="178" y="185">its own number,</text>
+        <text class="s5aL" x="178" y="200">argues after</text>
+        <text class="s5aL" x="316" y="170">38 CSVs pasted</text>
+        <text class="s5aL" x="316" y="185">by hand, six</text>
+        <text class="s5aL" x="316" y="200">hours a Monday</text>
+        <text class="s5aL" x="454" y="170">silent fixes by</text>
+        <text class="s5aL" x="454" y="185">hand, and no</text>
+        <text class="s5aL" x="454" y="200">record of them</text>
+        <text class="s5aL" x="592" y="170">three stock</text>
+        <text class="s5aL" x="592" y="185">sheets, one on</text>
+        <text class="s5aL" x="592" y="200">Priya's laptop</text>
+        <text class="s5aL" x="730" y="170">product codes</text>
+        <text class="s5aL" x="730" y="185">differ between</text>
+        <text class="s5aL" x="730" y="200">SG and MY</text>
+
+        <text class="s5aA" x="250" y="243">SOLUTIONS, MORE THAN ONE, UNDER THE STRONGEST</text>
+        <text class="s5aL" x="48" y="284">a written bridge</text>
+        <text class="s5aS" x="48" y="300">each timing gap named</text>
+        <text class="s5aL" x="248" y="284">a nightly pipeline</text>
+        <text class="s5aS" x="248" y="300">POS and ledger, one table</text>
+        <text class="s5aL" x="448" y="284">a reconciliation tool</text>
+        <text class="s5aS" x="448" y="300">bought from Q1's budget</text>
+        <text class="s5aB" x="702" y="284">upside-down tree:</text>
+        <text class="s5aS" x="702" y="300">"a pipeline" on top</text>
+
+        <text class="s5aN" x="30" y="344">Every box is something she said. The engineer added only the order, and the order is the argument.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the teal box came out of door 6, the hatched row is her pains as she said them, and the white boxes are the only layer you are allowed to invent</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Her test, in her words<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The top box is her answer to "how will you know this worked?", and it is written in her words, not yours: the auditor stops asking, and Priya's Monday takes one hour instead of six. Two things she can see without opening anything you built. A pipeline is not on it, and neither is a warehouse, a single source of truth or a daily refresh, because she never said any of those was the point.</p>
+        <p>Test the top box by turning the tree over. If what sits at the top is "a pipeline" or "connect the systems", the tree is upside down: a solution is pretending to be an outcome, and every branch under it will be a feature of the pipeline, sources, schedules, tables, rather than a pain of hers. That is the tree that produced the vendor integration project two years ago, which stalled the week Kenneth went on leave and never restarted. An outcome box you can check a build against reads like a fact about her office in eight weeks: a letter that stopped coming, a Monday that got its afternoon back.</p>
+        <p>Keeping her words is not politeness. "The auditor stops asking" is the sentence her board and her auditor already understand, so a project that points at it is one she can defend upward without translating. The moment you rewrite it as "improve data consistency across systems", it is your project again, and she cannot tell whether it worked.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Pains she named, not diagnoses<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The second row is a transcript, not a brainstorm. Each box is a pain she voiced behind doors 1 to 4: finance and the POS differ by about two percent every month and the auditor has asked why in writing; at month-end finance books its own number and argues afterwards; Priya downloads 38 CSV files every Monday and a 2019 macro merges them, six hours; when a number is wrong Priya fixes it by hand and nobody is told; three versions of the stock spreadsheet are in circulation and the one Priya treats as real is on her laptop; product codes differ between the Singapore and Malaysia outlets. Six boxes, six things she said.</p>
+        <p>The discipline is to write nothing in this row she did not say. "No single source of truth" is your diagnosis; "three stock sheets, one on Priya's laptop" is her pain. The first is a solution wearing a problem's clothes, and it pulls a warehouse in behind it. Torres's rule, as reported, is that opportunities are framed from the customer's side, and the reason is practical: a pain in her words is one she recognises on the page and fights for, and a diagnosis in yours is one she nods at.</p>
+        <p>Which opportunity is strongest is the first real judgement on the page, and it is a judgement about her test, not about the data. The two percent gap earns the thick edge because half of her test, the auditor, is decided by whether anyone can say in writing why the two numbers differ. The 38 CSVs are the other half, and they come second in the tree for a reason Part 2 makes plain.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Solutions come last, and the pipeline is only one of them<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Solutions are the only layer you invent, and the rule is at least two per opportunity you take seriously. Under the two percent gap: a written bridge that names each timing gap, card settlements two days late, cash deposited weekly, refunds that exist only in the accounting system; a nightly pipeline that loads the POS and the ledger into one table; a reconciliation tool bought once the SGD 15,000 opens in Q1. Three shapes, from cheapest to dearest. Writing three stops the first one you thought of, for most engineers the pipeline, from becoming the plan because it was alone on the page.</p>
+        <p>Torres's fourth layer, assumption tests, is where the pipeline shows its problem. The assumption under "POS and ledger in one table" is that the two copies are measuring the same thing on the same day, and her own answer says they are not: the gap is mostly timing, with refunds that the POS never sees. The pipeline would faithfully deliver the two percent every morning instead of once a month. The assumption under the written bridge is that three named timing gaps account for most of the difference; the test is to write the bridge for four outlets from last month's export and see what is left over. The <a href="https://phoebefu6.github.io/learn-product-thinking-with-phoebe/">Product Thinking course</a> teaches the tree as a discipline; here it is borrowed for one job, ordering what she already told you.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The pipeline that delivered the gap every morning.</strong> A constructed case, but the shape is the common one. An engineer takes "our numbers never match" as a request to connect the systems and builds exactly that: POS sales and ledger revenue side by side in one table, refreshed nightly, with a variance column. It works on day one. By day three the operations director has a report that shows a difference every single day, larger early in the week and smaller after the weekly cash deposit, and nobody in the room can say which side is right, because nothing in the build ever declared which copy was the one to book. The disagreement used to arrive monthly. Now it arrives with breakfast. Nothing in that tree pointed at the auditor's letter, so nothing in the build could answer it.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers pruning and scoring</span>
+      <h2>Three candidates, each starting with one real copy</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">A tree with six branches is a map, not a plan. The prune is to three candidate projects, one under each of the three strongest opportunities, never three solutions to the same one. At Harbourline: declare one stock sheet real and retire the other two; replace Priya's 38 manual downloads with one scheduled export built from what exists, run by Priya and documented, with the vendor API evaluated second, not first; and a written month-end reconciliation that states the timing gap so finance and the POS agree on why they differ before anything is automated. Two rules sit over all three. No new tool before a copy is declared real. Nothing that depends on Kenneth's login after January.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn scoring grid. Above it, the combination rule written first: impact times confidence times ease, 1 to 10 each, multiplied. Three rows, the three candidate projects: one stock sheet declared real with the other two retired, scored 4, 8 and 9 for 288; one scheduled export run by Priya with the vendor API evaluated second, scored 9, 5 and 7 for 315; and a written month-end bridge that states the timing gap, scored 9, 8 and 7 for 504, marked in teal as the winner. At the right, the operations director, who argues with the digits. A note says that averaged, the rows score 7.0, 7.0 and 8.0: the same winner, but the first two tie.">
+        <defs>
+          <filter id="s5bSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="59" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="s5bHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#9A3412" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="s5bAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2A1A12" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .s5bH { font: 800 12px Inter, sans-serif; fill: #2A1A12; }
+          .s5bL { font: 600 12px Inter, sans-serif; fill: #2A1A12; }
+          .s5bS { font: 400 11px Inter, sans-serif; fill: #6B5448; }
+          .s5bB { font: 800 11px Inter, sans-serif; fill: #084C4C; }
+          .s5bV { font: 800 18px Inter, sans-serif; fill: #7C2D12; }
+          .s5bA { font: 700 11px Inter, sans-serif; fill: #9A3412; letter-spacing: .05em; }
+          .s5bN { font: 400 12px Inter, sans-serif; fill: #6B5448; }
+        </style>
+
+        <text class="s5bH" x="30" y="26">THREE CANDIDATES, ONE GRID, THE RULE WRITTEN ABOVE IT</text>
+
+        <g filter="url(#s5bSk)" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- the rule, written above the grid before any digit -->
+          <rect x="30" y="40" width="600" height="32" rx="6" transform="rotate(-0.4 330 56)" fill="#FDF4EE"/>
+          <!-- the grid -->
+          <rect x="30" y="86" width="740" height="180" rx="6" transform="rotate(0.3 400 176)" fill="#FFFFFF"/>
+          <path d="M30 116 L770 116 M30 166 L770 166 M30 216 L770 216" stroke="#E2CFC3"/>
+          <path d="M330 86 L330 266 M420 86 L420 266 M530 86 L530 266 M610 86 L610 266" stroke="#E2CFC3" stroke-dasharray="4 4"/>
+          <!-- winner row highlight -->
+          <rect x="34" y="219" width="732" height="44" rx="4" transform="rotate(-0.2 400 241)" fill="#E4F3F3" stroke="#0E6B6B"/>
+          <!-- Adeline, the doodle anchor, who argues with the digits -->
+          <circle cx="818" cy="140" r="12"/>
+          <path d="M798 176 C804 158 832 158 838 176"/>
+        </g>
+
+        <text class="s5bB" x="42" y="61">RULE, written first: impact x confidence x ease, 1 to 10 each. We multiply.</text>
+
+        <text class="s5bA" x="40" y="106">CANDIDATE</text>
+        <text class="s5bA" x="340" y="106">IMPACT</text>
+        <text class="s5bA" x="430" y="106">CONFIDENCE</text>
+        <text class="s5bA" x="540" y="106">EASE</text>
+        <text class="s5bA" x="620" y="106">I x C x E</text>
+
+        <text class="s5bL" x="40" y="138">1  One stock sheet declared real,</text>
+        <text class="s5bS" x="40" y="154">the other two retired</text>
+        <text class="s5bV" x="375" y="148" text-anchor="middle">4</text>
+        <text class="s5bV" x="475" y="148" text-anchor="middle">8</text>
+        <text class="s5bV" x="570" y="148" text-anchor="middle">9</text>
+        <text class="s5bV" x="670" y="148" text-anchor="middle">288</text>
+
+        <text class="s5bL" x="40" y="188">2  One scheduled export, run by Priya,</text>
+        <text class="s5bS" x="40" y="204">documented; the vendor API evaluated second</text>
+        <text class="s5bV" x="375" y="198" text-anchor="middle">9</text>
+        <text class="s5bV" x="475" y="198" text-anchor="middle">5</text>
+        <text class="s5bV" x="570" y="198" text-anchor="middle">7</text>
+        <text class="s5bV" x="670" y="198" text-anchor="middle">315</text>
+
+        <text class="s5bB" x="40" y="238">3  A written month-end bridge that</text>
+        <text class="s5bB" x="40" y="254">states the timing gap</text>
+        <text class="s5bV" x="375" y="248" text-anchor="middle">9</text>
+        <text class="s5bV" x="475" y="248" text-anchor="middle">8</text>
+        <text class="s5bV" x="570" y="248" text-anchor="middle">7</text>
+        <text class="s5bV" x="670" y="248" text-anchor="middle">504</text>
+        <text class="s5bB" x="706" y="246">winner</text>
+
+        <text class="s5bS" x="818" y="196" text-anchor="middle">argues with</text>
+        <text class="s5bS" x="818" y="211" text-anchor="middle">the digits</text>
+
+        <text class="s5bN" x="30" y="294">The digits are the engineer's judgement, written down so she can argue with them.</text>
+        <text class="s5bS" x="30" y="314">Averaged: 7.0, 7.0 and 8.0. The same winner, but rows 1 and 2 tie; multiplying splits them, 288 against 315.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the rule sits above the grid because a score whose rule is unwritten cannot be argued with, only accepted</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>From tree to three, each with a declared copy<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Pruning has one rule: one candidate under each of the three strongest opportunities, never three solutions to one. Three ways to reconcile the revenue is a menu, and a menu makes her choose a build. Three projects under three different pains is a portfolio, and a portfolio lets her choose a problem, which is the choice she is qualified to make.</p>
+        <p>An engineer's candidate is written in six lines, two more than most: what it is, in words from her tree; the first step, something that can start this week; who does it, a named person on her side and on yours; what it needs; <strong>which copy it declares real</strong>; and <strong>whose login it runs on</strong>. The fifth line is the one that stops a pipeline moving the disagreement faster. Candidate 1 declares one of the three stock sheets real, and it is her decision, not Priya's laptop's. Candidate 2 declares the POS export the copy the Monday report is built from, with every hand fix Priya makes written down beside it, because a silent fix is a second source of truth. Candidate 3 declares which revenue number is booked at month-end, which today is finance's, and writes down why the POS differs from it.</p>
+        <p>The sixth line is the fact that only comes out once she trusts you, a gate of 3 on session 3's bench. Kenneth is the only IT person, holds the only POS admin login, and leaves in January. So candidate 2 runs on Priya's own access, the way she downloads the 38 files today, and the vendor API waits until someone other than Kenneth can say yes to it. Whether the POS lets an ordinary login schedule its export is not on her sheet. It is the assumption the first step tests, and until it is tested, confidence on row 2 is a 5.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Score it, and write the rule down<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Sean Ellis and Morgan Brown's ICE score, reported here from <em>Hacking Growth</em>, rates each candidate on impact, confidence and ease, each from 1 to 10. How the three are combined is contested: some teams multiply, some average, and the summaries that quote the book describe it differently. So the honest move is not to pick the right rule. It is to write down which one you used, above the grid, before you fill in a digit.</p>
+        <p>The grid above shows why. Multiplied, the three rows score 288, 315 and 504. Averaged, they score 7.0, 7.0 and 8.0. The winner is the same, but the order below it is not: averaging ties the stock sheet with the export, and multiplying puts the export ahead, because its one weak leg, a confidence of 5, is outweighed by an impact of 9 that speaks straight to Priya's six hours. Multiplying punishes a weak leg harder than averaging does; averaging forgives it. Neither is wrong. An unwritten rule is.</p>
+        <p>The digits are yours, and that is the point rather than a weakness. "Why is impact only 4 on the stock sheet?" is a conversation about her office, and the honest answer is that stock is not in her test; she did not mention it when asked how she would know this worked. A grid with the rule above it is a page she can argue with. A ranking with no rule and no digits is a verdict, and a verdict she did not make is one she will not defend to the auditor.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The simple fix first, and the API second<span class="mini">1 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Google's machine learning problem-framing course, read at source, gives one line that belongs on every engineer's prioritisation grid: verify that the current non-ML solution is optimized before you build anything cleverer. The course is about models, and the line is about pipelines too. At Harbourline the clever thing is an integration through the vendor API, which nobody has ever used. The current solution is Priya's 38 downloads and a 2019 macro, and it is not optimized; it is a person doing by hand what one scheduled export could do. Fix the current way first and the API becomes a second step with a known baseline. Start with the API and you are building on a login that leaves in January.</p>
+        <p>The same logic puts the written bridge first. Card settlements landing two days late, cash deposited weekly and refunds that live only in accounting are not a data problem any tool will fix; they are three sentences that belong on a page before any job runs. The <a href="https://phoebefu6.github.io/learn-decision-intelligence-with-phoebe/">Decision Intelligence course</a> owns the wider discipline of choosing between options under uncertainty; the grid here is a single page of it.</p>
+      </div>
+    </details>
+
+    <div class="tryrow" data-fn="wordcount" data-multiline="1" data-title="Write the declared-copy line for one candidate" data-hint="Take one project you would propose this month. Write its fifth line: which copy it treats as real, who declared it, and what happens to the other copies. Then its sixth: whose login it runs on. Two sentences. If you cannot name who declared it, the first step is to ask." data-seed="" data-cta="Count it"></div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The API that was evaluated first.</strong> A constructed case, built from her own answers. Two years ago a vendor integration project at Harbourline stalled the week Kenneth went on leave and never restarted. An engineer who puts the vendor API first in tonight's plan puts the same dependency first again: the one person with the admin login, now leaving in January. The API may well be the right answer in Q1, when there is budget and, with luck, a second person who can log in. It is the wrong first step, because the first step has to survive the person who is not in the room, and the winner on the grid needs no admin login at all: it is written on a page, from the one export a month the bookkeeper already sends.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers the pilot</span>
+      <h2>Four outlets, eight weeks, one written answer</h2>
+      <span class="tag concept">4 min live</span>
+    </div>
+    <p class="lede">Door 6 is where a candidate becomes a pilot, and everything the pilot needs was in her answers. Her test: the auditor stops asking, and Priya's Monday takes one hour instead of six. Her partner: Priya, two hours a week, and Priya wants to learn. Her scope: four outlets first, never all 38 at once. Her constraint: no budget this quarter, SGD 15,000 in Q1, so the first step uses what exists. Her dates: the board in six weeks, the auditor's written answer in eight. Facts from doors 5 and 6, and the pilot almost writes itself.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn eight-week timeline from the meeting to the auditor's written answer, with milestone boxes on alternate sides of the axis. Week 0, above: the brief, one page, sent within 24 hours. Week 1, below: the bridge drafted from last month's export for four outlets with Priya. Week 3, above: the first month-end closed with the bridge by day five. Week 5, below: Priya's scheduled export, run on her own login, and a Monday of one hour. Week 6, above: the board meets and sees one slide with the four outlets' bridge. Week 8, below, in teal: the auditor's written answer, with the bridge attached. At the top right, a letter with the note: the test, the auditor stops asking.">
+        <defs>
+          <filter id="s5cSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="61" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="s5cHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#9A3412" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="s5cAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2A1A12" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .s5cH { font: 800 12px Inter, sans-serif; fill: #2A1A12; }
+          .s5cL { font: 600 12px Inter, sans-serif; fill: #2A1A12; }
+          .s5cS { font: 400 11px Inter, sans-serif; fill: #6B5448; }
+          .s5cB { font: 800 11px Inter, sans-serif; fill: #084C4C; }
+          .s5cA { font: 700 11px Inter, sans-serif; fill: #9A3412; letter-spacing: .05em; }
+          .s5cW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .s5cN { font: 400 12px Inter, sans-serif; fill: #6B5448; }
+        </style>
+
+        <text class="s5cH" x="30" y="26">EIGHT WEEKS, FOUR OUTLETS, ONE WRITTEN ANSWER</text>
+        <text class="s5cS" x="30" y="42">the constructed timeline for the winner, then the export's first step · nothing spent before Q1</text>
+
+        <g filter="url(#s5cSk)" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- the week axis, weeks 0 to 8 at 95px -->
+          <path d="M40 190 L852 190" stroke-width="3" marker-end="url(#s5cAr)"/>
+          <path d="M250 184 L250 196 M440 184 L440 196 M725 184 L725 196"/>
+          <!-- milestone boxes, alternating: above for weeks 0, 3, 6; below for weeks 1, 5, 8 -->
+          <rect x="20" y="96" width="150" height="62" rx="6" transform="rotate(-0.5 95 127)" fill="#FDF4EE"/>
+          <rect x="80" y="222" width="150" height="62" rx="6" transform="rotate(0.4 155 253)" fill="url(#s5cHc)"/>
+          <rect x="270" y="96" width="150" height="62" rx="6" transform="rotate(-0.4 345 127)" fill="#FDF4EE"/>
+          <rect x="460" y="222" width="150" height="62" rx="6" transform="rotate(0.5 535 253)" fill="#FDF4EE"/>
+          <rect x="555" y="96" width="150" height="62" rx="6" transform="rotate(-0.4 630 127)" fill="#FDF4EE"/>
+          <rect x="700" y="222" width="150" height="62" rx="6" transform="rotate(0.4 775 253)" fill="#E4F3F3" stroke="#0E6B6B"/>
+          <!-- connectors, box edge to badge edge, clear of every label -->
+          <path d="M60 158 L60 179 M345 158 L345 179 M630 158 L630 179 M155 201 L155 222 M535 201 L535 222 M820 201 L820 222" stroke="#E2CFC3"/>
+          <!-- badges for milestone weeks, on the axis -->
+          <circle cx="60" cy="190" r="11" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="155" cy="190" r="11" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="345" cy="190" r="11" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="535" cy="190" r="11" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="630" cy="190" r="11" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="820" cy="190" r="11" fill="#0E6B6B" stroke="#0E6B6B"/>
+          <!-- the auditor's letter, the doodle anchor: the success test -->
+          <rect x="792" y="36" width="40" height="52" rx="3" transform="rotate(0.8 812 62)" fill="#FFFFFF"/>
+          <path d="M800 50 L824 50 M800 60 L824 60 M800 70 L816 70"/>
+        </g>
+
+        <text class="s5cW" x="60" y="194" text-anchor="middle">0</text>
+        <text class="s5cW" x="155" y="194" text-anchor="middle">1</text>
+        <text class="s5cW" x="345" y="194" text-anchor="middle">3</text>
+        <text class="s5cW" x="535" y="194" text-anchor="middle">5</text>
+        <text class="s5cW" x="630" y="194" text-anchor="middle">6</text>
+        <text class="s5cW" x="820" y="194" text-anchor="middle">8</text>
+        <text class="s5cA" x="20" y="214">WEEK</text>
+
+        <text class="s5cL" x="32" y="116">the brief</text>
+        <text class="s5cS" x="32" y="131">one page, sent</text>
+        <text class="s5cS" x="32" y="146">within 24 hours</text>
+        <text class="s5cL" x="92" y="242">the bridge drafted</text>
+        <text class="s5cS" x="92" y="257">last month's export,</text>
+        <text class="s5cS" x="92" y="272">four outlets, Priya</text>
+        <text class="s5cL" x="282" y="116">first month-end</text>
+        <text class="s5cS" x="282" y="131">closed with the</text>
+        <text class="s5cS" x="282" y="146">bridge by day five</text>
+        <text class="s5cL" x="472" y="242">Priya's export</text>
+        <text class="s5cS" x="472" y="257">on her own login;</text>
+        <text class="s5cS" x="472" y="272">Monday: one hour</text>
+        <text class="s5cL" x="567" y="116">the board meets</text>
+        <text class="s5cS" x="567" y="131">one slide: the four</text>
+        <text class="s5cS" x="567" y="146">outlets' bridge</text>
+        <text class="s5cB" x="712" y="242">auditor's answer</text>
+        <text class="s5cS" x="712" y="257">written, week 8,</text>
+        <text class="s5cS" x="712" y="272">the bridge attached</text>
+
+        <text class="s5cB" x="780" y="56" text-anchor="end">the test</text>
+        <text class="s5cS" x="780" y="71" text-anchor="end">the auditor stops</text>
+        <text class="s5cS" x="780" y="86" text-anchor="end">asking</text>
+
+        <text class="s5cN" x="30" y="314">Nothing on the line costs money: the bridge is a written page, and the export uses the access Priya has today.</text>
+        <text class="s5cS" x="30" y="334">The month-end is drawn at week 3 for the picture; where it really falls depends on the meeting date.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the answer is teal because it is the only thing on the line with a name and a date she did not choose, and the letter above the line is how she will know</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The pilot is the first step, not the plan<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A pilot is the winning candidate with four things pinned to it: a scope, a partner, a test and a date. All four came out of doors 5 and 6, so none of them is yours to invent. Scope: four outlets, because she said she would run a pilot in four first, never all 38. Partner: Priya, two hours a week. Test: the auditor's written answer, due in eight weeks, and a Monday that takes one hour. Budget: nothing before Q1.</p>
+        <p>The pilot runs the winner first and the runner-up's first step second, because the order is the argument. The bridge comes first: for four outlets, from last month's export, the three timing gaps written as sentences, card settlements two days behind the till, cash banked weekly, refunds that only the accounting system sees, and whatever is left over written as "not yet explained". Only when finance and the POS agree on why they differ does anything get automated, and the first thing automated is small: Priya's own export for the same four outlets, on her own login, with every hand fix written down. A pipeline built before the bridge moves the disagreement faster; a pipeline built after it carries a number both sides have already agreed to disagree about, in writing.</p>
+        <p>Four outlets beat 38 for a reason she can feel and you can measure. In four outlets the bridge is a page Priya can check line by line against the till receipts; across 38 it is a report nobody reads to the bottom. And her test beats a pipeline metric because the pipeline metric measures the build: a job that ran every night for eight weeks and an auditor who is still asking is a failed project with a green dashboard.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>What the tuned meeting did not hear<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Run session 3's bench on the order tuned for an engineer and read the log to the end, not just the total. The data-state door opened widest gets her test and her four-outlet scope from "How will you know this worked?", and it gets Kenneth's login, the monthly export limit and the three stock sheets. Then it runs out of minutes on the limits question, before "When is the next date you have to show something upward?" and "Who on your side could spend two hours a week with me?" are ever asked. So the tuned 45 minutes never hear the board in six weeks, the auditor's answer due in eight, or Priya's two hours.</p>
+        <p>The printed door order has the mirror-image gap: it hears the dates and Priya's two hours, and misses her test, the four outlets and Kenneth. Neither order hears everything, which is the honest state of any 45-minute meeting. The pilot above uses facts from both, and the ones your own meeting did not reach are not facts yet. On your page they are marked as guesses to confirm, and session 6 puts them in the covering note as the two questions you did not get to.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Kenneth's login shapes the plan and never appears in it<span class="mini">1 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>She told you Kenneth is leaving in January, and she told you she has not told the team. That fact decides the plan without being written into it. Every step in the eight weeks runs on access someone other than Kenneth holds: the bookkeeper's monthly export, Priya's own downloads, a page. Nothing waits for the admin login, and nothing needs it after January. The vendor API goes on the Q1 list with one line beside it, "needs an admin login we can keep", which is true whoever holds it.</p>
+        <p>The discipline is to use a confidence without spending it. Priya is your partner and will read the brief; a line that names Kenneth's departure is a line Adeline did not agree to publish. Design around the fact, keep it in your own notes, and let the brief say only what the plan needs: no step depends on one person's login.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The answer the auditor asked for again.</strong> A constructed case, with a shape that recurs. The four-outlet bridge went to the auditor in week 8 as a single page: the two numbers, three named timing gaps with the amount each explained, and one short line marked "not yet explained". The auditor did not ask which number was right. He asked for the same page for all 38 outlets at the next month-end. That is the difference between a pilot and a demo: a demo is shown, a pilot is asked for again, and the request to scale came from the person whose letter started the meeting.</p>
+    </div>
+  </section>
+
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>Your tree, your three, your first copy</h2>
+      <span class="tag demo">★ 22 min · everyone writes</span>
+    </div>
+    <p class="lede">One page, three columns. Take the answers you collected for your real request, or Adeline's if you have none yet, and build the page in six steps: the test in their words, the pains as they said them, solutions and an assumption under the strongest, three candidates with a declared copy and a login each, the grid with its rule, and the pilot. Every line is written tonight; nothing on the page is a decision the business person has not already given you the facts for, and every line they did not give you is marked as a guess.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 334" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn one-page layout in three columns. Left, the tree: an outcome box at the top, a hatched row of three pains, and two solution boxes under each. Middle, three candidate cards, each with six fields in three lines: what and first step, who and needs, the real copy and whose login. Under the cards, a small scoring grid with impact, confidence, ease and the rule. Right, a single pilot box drawn in teal with scope, partner, test, date and needs. Arrows run from the tree to the candidates and from the third candidate to the pilot.">
+        <defs>
+          <filter id="s5dSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="67" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="s5dHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#9A3412" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="s5dAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2A1A12" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .s5dH { font: 800 12px Inter, sans-serif; fill: #2A1A12; }
+          .s5dL { font: 600 12px Inter, sans-serif; fill: #2A1A12; }
+          .s5dS { font: 400 11px Inter, sans-serif; fill: #6B5448; }
+          .s5dB { font: 800 11px Inter, sans-serif; fill: #084C4C; }
+          .s5dA { font: 700 11px Inter, sans-serif; fill: #9A3412; letter-spacing: .05em; }
+          .s5dN { font: 400 12px Inter, sans-serif; fill: #6B5448; }
+        </style>
+
+        <text class="s5dH" x="30" y="22">THE PAGE, THREE COLUMNS, LEFT TO RIGHT</text>
+
+        <g filter="url(#s5dSk)" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- the page, the doodle anchor -->
+          <rect x="30" y="33" width="820" height="264" rx="4" transform="rotate(-0.2 440 165)" fill="#FFFFFF"/>
+          <!-- left column: the tree -->
+          <rect x="60" y="66" width="200" height="30" rx="4" transform="rotate(-0.5 160 81)" fill="#FDF4EE"/>
+          <path d="M160 96 L160 110"/>
+          <rect x="46" y="110" width="60" height="30" rx="4" fill="url(#s5dHc)"/>
+          <rect x="130" y="110" width="60" height="30" rx="4" fill="url(#s5dHc)"/>
+          <rect x="214" y="110" width="60" height="30" rx="4" fill="url(#s5dHc)"/>
+          <path d="M60 140 L60 154 M92 140 L92 154 M144 140 L144 154 M176 140 L176 154 M228 140 L228 154 M260 140 L260 154" stroke="#E2CFC3"/>
+          <rect x="46" y="154" width="26" height="22" rx="3"/>
+          <rect x="80" y="154" width="26" height="22" rx="3"/>
+          <rect x="130" y="154" width="26" height="22" rx="3"/>
+          <rect x="164" y="154" width="26" height="22" rx="3"/>
+          <rect x="214" y="154" width="26" height="22" rx="3"/>
+          <rect x="248" y="154" width="26" height="22" rx="3"/>
+          <!-- arrow to the middle column -->
+          <path d="M290 125 L330 125" marker-end="url(#s5dAr)"/>
+          <!-- middle column: three candidate cards, six fields each -->
+          <rect x="340" y="56" width="220" height="58" rx="4" transform="rotate(-0.4 450 85)" fill="#FDF4EE"/>
+          <rect x="340" y="122" width="220" height="58" rx="4" transform="rotate(0.5 450 151)" fill="#FDF4EE"/>
+          <rect x="340" y="188" width="220" height="58" rx="4" transform="rotate(-0.3 450 217)" fill="#FDF4EE" stroke-width="2.6"/>
+          <!-- the grid under the cards -->
+          <rect x="340" y="256" width="220" height="32" rx="3" fill="#FFFFFF" stroke="#E2CFC3"/>
+          <path d="M392 256 L392 288 M444 256 L444 288 M496 256 L496 288" stroke="#E2CFC3" stroke-dasharray="3 3"/>
+          <!-- arrow from the third card to the pilot -->
+          <path d="M566 210 L602 210" marker-end="url(#s5dAr)"/>
+          <!-- right column: the pilot -->
+          <rect x="610" y="72" width="220" height="150" rx="6" transform="rotate(0.5 720 147)" fill="#E4F3F3" stroke="#0E6B6B"/>
+        </g>
+
+        <text class="s5dA" x="46" y="56">1 TREE</text>
+        <text class="s5dL" x="70" y="86">test, in their words</text>
+        <text class="s5dS" x="58" y="129">pain</text>
+        <text class="s5dS" x="142" y="129">pain</text>
+        <text class="s5dS" x="226" y="129">pain</text>
+        <text class="s5dS" x="46" y="198">two solutions under each,</text>
+        <text class="s5dS" x="46" y="213">one assumption under each</text>
+
+        <text class="s5dA" x="340" y="50">2 THREE CANDIDATES</text>
+        <text class="s5dL" x="352" y="74">what · first step</text>
+        <text class="s5dS" x="352" y="89">who · needs</text>
+        <text class="s5dS" x="352" y="104">real copy · whose login</text>
+        <text class="s5dL" x="352" y="140">what · first step</text>
+        <text class="s5dS" x="352" y="155">who · needs</text>
+        <text class="s5dS" x="352" y="170">real copy · whose login</text>
+        <text class="s5dB" x="352" y="206">what · first step</text>
+        <text class="s5dS" x="352" y="221">who · needs</text>
+        <text class="s5dS" x="352" y="236">real copy · whose login</text>
+        <text class="s5dS" x="362" y="277">I</text>
+        <text class="s5dS" x="414" y="277">C</text>
+        <text class="s5dS" x="466" y="277">E</text>
+        <text class="s5dS" x="508" y="277">rule</text>
+
+        <text class="s5dA" x="610" y="64">3 PILOT</text>
+        <text class="s5dB" x="624" y="98">scope: four outlets</text>
+        <text class="s5dB" x="624" y="117">partner: Priya, 2 h a week</text>
+        <text class="s5dB" x="624" y="136">test: the auditor's answer</text>
+        <text class="s5dB" x="624" y="151">and a one-hour Monday</text>
+        <text class="s5dB" x="624" y="170">date: week 8, board week 6</text>
+        <text class="s5dS" x="624" y="189">needs: nothing before Q1</text>
+        <text class="s5dS" x="624" y="204">login: none of Kenneth's</text>
+
+        <text class="s5dN" x="30" y="320">Left to right, as the meeting ran: her test picks the pains, the pains pick the three, the rule picks the one.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the pilot is teal because every line in it traces back to a door 5 or door 6 answer, which is how you can tell the page is hers</figcaption>
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <p><strong>Write the test in their words at the top.</strong> Not a goal you would set for them. The sentence they said when you asked how they would know it worked, with the number in it if they gave one. If the sentence you have is "a pipeline" or "one source of truth", you do not have door 6 yet, and the tree cannot start; write the question you will ask to get it instead.</p>
+        <div class="prompt-box good"><span class="label">★ Step 1 · the test, her words</span>TEST (Adeline, door 6): "The auditor stops asking, and Priya's Monday takes one hour
+instead of six."
+Seen by: her, when the letter does not come; Priya, every Monday afternoon.</div>
+      </div>
+      <div class="step">
+        <p><strong>List the opportunities as they said them.</strong> One line each, their words, no diagnosis. Five to seven is normal for a 45-minute meeting. Mark the three that bear most directly on the test; that mark is your first judgement, and you should be able to say why in one sentence per mark.</p>
+        <div class="prompt-box good"><span class="label">★ Step 2 · the pains, as said</span>1. "Finance and the POS are about two percent apart, every month."  &lt;- strongest
+2. "When they disagree, we book finance's number and argue afterwards."
+3. "Priya downloads 38 files every Monday. Six hours."                &lt;- strong
+4. "When a number is wrong, Priya fixes it. Nobody is told."
+5. "There are three versions of the stock spreadsheet."               &lt;- strong
+6. "Singapore and Malaysia use different product codes."</div>
+      </div>
+      <div class="step">
+        <p><strong>Solutions and the assumption under the strongest.</strong> At least two under each strong pain, cheapest first, dearest last. Under each, one line for the assumption that has to be true, because that line is what the first step will test. If one of your solutions is a pipeline, its assumption is almost always "the two copies measure the same thing on the same day"; check it against what she said.</p>
+        <div class="prompt-box good"><span class="label">★ Step 3 · solutions and the assumption under each</span>Under 1 (two percent apart):
+  a. a written bridge naming each timing gap     assumes: card, cash and refunds explain most of it
+  b. nightly pipeline, POS and ledger together   assumes: both copies measure the same day (they do not)
+Under 3 (38 files every Monday):
+  a. one scheduled export, run by Priya          assumes: her own login can schedule it (untested)
+  b. the vendor API                              assumes: an admin login we keep past January
+Under 5 (three stock sheets):
+  a. declare one real, retire two                assumes: she will name one, not Priya's laptop by default
+  b. stock kept in the POS                       assumes: the POS holds stock today (it does not)</div>
+      </div>
+      <div class="step">
+        <p><strong>Write the three candidates, six lines each.</strong> What, first step, who, needs, which copy is declared real, whose login it runs on. One candidate per strong opportunity. The first step must be something a named person can do this week without asking for money, and the login line must not name a person who is leaving.</p>
+        <div class="prompt-box good"><span class="label">★ Step 4 · three candidates</span>C1  One stock sheet declared real, the other two retired
+    first step: Adeline names the real one; Priya archives two     who: Adeline, Priya
+    needs: nothing    real copy: the one she names    login: none
+C2  One scheduled export, run by Priya, documented; the vendor API second
+    first step: test whether her login can schedule four outlets   who: Priya, me
+    needs: nothing    real copy: the POS export, hand fixes logged    login: Priya's own
+C3  A written month-end bridge that states the timing gap
+    first step: last month's export, four outlets, three gaps      who: Priya, me
+    needs: nothing    real copy: the booked number, POS explained     login: none</div>
+      </div>
+      <div class="step">
+        <p><strong>Score the three, with the rule written above the grid.</strong> Impact, confidence, ease, 1 to 10. Write the combination rule first, then the digits, then check your own arithmetic twice. Run it the other way too; if the winner or the order changes when you swap multiply for average, say so under the grid, because that is the honest state of the choice.</p>
+        <div class="prompt-box good"><span class="label">★ Step 5 · the grid, rule first</span>RULE: I x C x E, each 1 to 10. (Some teams average. We multiply, because a weak leg should hurt.)
+
+                     I    C    E    I x C x E    average
+C1 stock sheet       4    8    9       288         7.0
+C2 Priya's export    9    5    7       315         7.0
+C3 month-end bridge  9    8    7       504         8.0   &lt;- winner
+Same winner either way. Averaged, C1 and C2 tie; multiplied, C2 is second.
+Confidence on C2 rises to 8 the day her login schedules one outlet.</div>
+      </div>
+      <div class="step">
+        <p><strong>Write the pilot in five lines.</strong> Scope, partner, test, date, and what it needs. Every line comes from door 5 or door 6. If a line is yours rather than theirs, or came from a question your meeting never reached, mark it as a guess to confirm; session 6 sends the page within 24 hours and the guesses are the questions in the covering note.</p>
+        <div class="prompt-box good"><span class="label">★ Step 6 · the pilot</span>PILOT: C3, the written month-end bridge; then C2's first step, same four outlets
+scope:   four outlets (she offered four, never 38)
+partner: Priya, two hours a week                     [confirm: not asked in my 45 minutes]
+test:    the auditor's written answer, and a Monday that takes one hour
+date:    board slide in week 6, the auditor's answer in week 8   [confirm]
+needs:   nothing before Q1; nothing on an admin login; the SGD 15,000 waits for a fact</div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>The first project declares a copy and produces a fact she can see.</strong> That is the test of a first step, and it is stricter than it sounds. A fact she can see is a page with her own outlets' numbers on it that she can hand to the auditor, not a job that ran. If the first step needs money, it is the second step; if it moves data before a copy is declared real, it is the pipeline that delivered the gap every morning.</p>
+    </div>
+  </section>
+
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before session 6</h2>
+      <span class="tag exercise">45 min</span>
+    </div>
+    <ol>
+      <li><strong>Build the tree for your real request.</strong> Their test at the top in their words, their pains as the row, two solutions and one assumption under each of the three strongest. If you cannot fill the top box, the homework is the question that fills it, and you ask it this week.</li>
+      <li><strong>Prune to three and write each in six lines,</strong> with the declared copy and the login on every one. For any candidate where you cannot say who declared the copy real, write the question that finds out.</li>
+      <li><strong>Score them with the rule above the grid,</strong> then run the grid a second time with the other rule and write one line on whether the winner or the order moved. Check the arithmetic both times.</li>
+      <li><strong>Write the pilot in five lines and bring all of it to session 6,</strong> printed, with the Six Doors sheet from session 1 and the lineage map from session 2. Mark every line that is your guess rather than their answer. The mock meeting runs on your own sheet, and the brief is written from these pages.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and session 5 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · Why does every candidate carry a line saying which copy it declares real, before anything is moved?</p>
+      <button class="qopt" type="button">A · Because auditors require a named system of record on every project plan</button>
+      <button class="qopt" type="button">B · Because the POS is the source of truth, and the line records that for the team</button>
+      <button class="qopt" type="button">C · Because a pipeline that moves copies nobody has declared real carries the disagreement faster instead of settling it; at Harbourline the two percent is mostly settlement timing plus refunds only accounting sees, so a nightly join would deliver the gap every morning with no one able to say which side to book</button>
+      <button class="qopt" type="button">D · Because declaring a copy real lets you delete the others the same day</button>
+      <p class="qwhy">Card settlements land two days late, cash is banked weekly, and refunds never reach the POS. Put the two copies side by side without a declaration and a written bridge, and the variance column is right every night and useful on none of them. Declare which number is booked, write why the other differs, then automate.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · The grid scores the stock sheet 4, 8, 9 and Priya's export 9, 5, 7. Why must the combination rule be written above it?</p>
+      <button class="qopt" type="button">A · Because whether ICE digits are multiplied or averaged is contested, and here the two rules disagree about the order: averaged, both rows score 7.0 and tie; multiplied, they score 288 and 315 and the export comes second. An unwritten rule turns a score she could argue with into a verdict she did not make</button>
+      <button class="qopt" type="button">B · Because ICE is always averaged, and writing it down reminds the team</button>
+      <button class="qopt" type="button">C · Because ICE is always multiplied, and the book says so</button>
+      <button class="qopt" type="button">D · Because the rule only matters when the winner changes, and writing it down is a formality otherwise</button>
+      <p class="qwhy">Multiplying punishes a weak leg harder; averaging forgives it. Neither is wrong. The winner here, the bridge at 504 or 8.0, is the same either way, but the order below it is not, and the order below the winner is what she will ask about next.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="3">
+      <p class="qtext">3 · Kenneth holds the only POS admin login and leaves in January; she has not told the team. What does that do to the pilot?</p>
+      <button class="qopt" type="button">A · It goes in the brief as the main risk, so Priya can plan for it</button>
+      <button class="qopt" type="button">B · Nothing; logins are an IT matter, not part of a plan</button>
+      <button class="qopt" type="button">C · It makes the vendor API the first step, so the integration is finished before he goes</button>
+      <button class="qopt" type="button">D · It shapes every step without being written in any: the bridge runs on the bookkeeper's monthly export, the export on Priya's own login, the vendor API waits for Q1 with "needs an admin login we can keep", and the brief says only that no step depends on one person's login</button>
+      <p class="qwhy">The last integration attempt stalled the week Kenneth went on leave. Rushing the API before January puts the same dependency first again, and publishing his departure spends a confidence she gave you at trust 3. Design around the fact, keep it in your notes.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Opportunity solution tree: outcome, opportunities, solutions, assumption tests</span><span class="note">Teresa Torres, Continuous Discovery Habits, Product Talk, 2021; reported from summaries, and taught in depth in the Product Thinking course</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">ICE: impact, confidence, ease, each 1 to 10</span><span class="note">Sean Ellis and Morgan Brown, Hacking Growth, Currency, 2017; reported, and whether the three are averaged or multiplied is contested across summaries, so the page says write down which. The digits are the engineer's written judgement, and 288, 315, 504 and 7.0, 7.0, 8.0 are that judgement's arithmetic, nothing more</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Verify the current non-ML solution is optimized before building anything cleverer</span><span class="note">Google for Developers, "Introduction to Machine Learning Problem Framing", developers.google.com/machine-learning/problem-framing, accessed 2026-09-29; primary, read at source</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">What the tuned order and the printed order each heard in 45 minutes</span><span class="note">Session 3's bench, re-run in node on the printed bank file for this page: the tuned order stops after the limits question and never asks for the dates or Priya's two hours; the printed order hears those and misses her test, the four outlets and Kenneth. The mechanism is the finding, never the numbers as facts about a real business</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Harbourline, Adeline Tan, Kenneth, Priya and every fact in the tree</span><span class="note">Constructed. The 24 facts are printed in the bench's bank file and invented to be typical, not sourced; the three stories on this page are constructed from them</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">The eight-week timeline, and the auditor who asked for the page again</span><span class="note">Constructed to show the shape of a pilot that produces a fact; the month-end week is drawn, not dated, and no claim is made about how long a real reconciliation takes or whether the POS allows a scheduled export on an ordinary login</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Every fact on this page, and its verification tier, is recorded in the course's source map.</p>
+  </section>
+
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 5 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Her test on top, her words</b><span>A tree with "a pipeline" on top is upside down. Turn it over before you branch.</span></div>
+      <div class="cheat-item"><b>Pains are a transcript</b><span>"Three stock sheets" is her pain. "No single source of truth" is your solution in disguise.</span></div>
+      <div class="cheat-item"><b>Six lines per candidate</b><span>What, first step, who, needs, which copy is declared real, whose login it runs on.</span></div>
+      <div class="cheat-item"><b>Write the rule above the grid</b><span>Multiply or average is contested. Write which, then the digits, then check the sums.</span></div>
+      <div class="cheat-item"><b>Declare, write, then automate</b><span>No new tool before a copy is declared real. The bridge before the export, the export before the API.</span></div>
+      <div class="cheat-item"><b>Pilot: scope, partner, test, date</b><span>Four outlets, Priya, the auditor's answer and a one-hour Monday, week 8. Nothing on a login that leaves.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>Session 6 is the whole thing at full speed. You run the 45-minute meeting on the bench with your own Six Doors sheet and see what your questions get out of Adeline against the canon: the printed door order at 47, the order tuned for an engineer at 51, and the efficient interview at 17 with five false beliefs in the notes. Then you write the one-page brief from tonight's page, in her words, with "no new pipeline yet" as the line that most needs her agreement, and send it within 24 hours with the guesses marked as questions.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Session 5 of 6 · learn-asking-right-questions-as-de-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="04-teaching-while-you-ask.html">← Prev: Teaching while you ask</a> &nbsp;·&nbsp; <a href="06-the-mock-meeting-and-the-brief.html">Next: The mock meeting and the one-page brief →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

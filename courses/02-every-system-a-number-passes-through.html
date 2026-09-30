@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Session 2 of 6. How a data engineer gets the real data state out of a person who has never seen a schema: whether each number was recorded, typed, not recorded, or exported by a person on a schedule; a five-rung ladder asked per system as plain questions; and the lineage map with an owner, a login, a read frequency and a declared-real copy on every box.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="Every system a number passes through - learn asking the right questions as a data engineer with phoebe">
+<meta property="og:description" content="Session 2 of 6. Four origins, five rungs per system, owners and logins by name, and the lineage map she can correct.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-asking-right-questions-as-de-with-phoebe/courses/02-every-system-a-number-passes-through.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-asking-right-questions-as-de-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Every system a number passes through - learn asking the right questions as a data engineer with phoebe">
+<meta name="twitter:description" content="Session 2 of 6. Four origins, the ladder per system, the one key, the lineage map.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-asking-right-questions-as-de-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Session 2 · Every system a number passes through - learn asking the right questions as a data engineer with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-asking-right-questions-as-de-with-phoebe</a> / Session 2 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Asking the Right Questions as a Data Engineer with Phoebe · Session 2 of 6</div>
+    <h1>Every system a <span class="accent">number</span> passes through</h1>
+    <p class="sub">Door 4, data state, is your widest door, and the one Adeline cannot answer in your words. She has never heard of change data capture and never will. She does know that Priya pulls 38 files off the till system every Monday, that the bookkeeper in Kuala Lumpur sends one export a month, that there are three stock spreadsheets and Priya trusts the one on her laptop, and that Kenneth is the only person who can get into the POS. Those facts are the lineage. Tonight is how to get them out of her in plain words: where each number was born and how it reaches you, how mature the habit around each system is, and who owns, logs in to and reads each box, drawn as a map she can correct before you move a single row. The other five doors live in <a href="https://phoebefu6.github.io/learn-asking-right-questions-as-da-with-phoebe/courses/01-why-the-gap-and-the-six-doors.html">the corridor</a>.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Core</span>
+      <span class="chip audience">Data engineers, and anyone asked to "connect the systems"</span>
+      <span class="chip audience">No code. A pen.</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · Four origins, the ladder, owners and copies</span>
+      <span class="a3" style="flex:5">18-40 · Build-along: the lineage map</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we start</h2>
+    </div>
+    <p class="lede">An engineer asked about data state reaches for a system diagram, and a person who runs 38 pharmacies hears an audit. Harbourline's data state is not a diagram yet. It is a set of facts about people and calendars: a till records every sale, a bank settles cards two days later, a bookkeeper exports once a month because the contract says so, a person pastes 38 files into a spreadsheet on Monday, and a copy on one laptop is treated as the real one without anyone having said so. Every one of those facts is a plain question away. The three parts tonight are three kinds of plain question: where each number comes from, how mature the habit around each system is, and who owns, logs in to and reads each box. The build-along draws the answers as the lineage she can correct.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+      <span class="pill">★ Build-along = write it yourself</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> A one-page lineage map for a request you actually have: every number on the pack traced through every system it passes through, each hand-off drawn, an owner, a login holder and a read frequency on every box, the copy somebody has declared real (or the word "nobody"), and the one question you send it with: "which arrow is wrong?". Session 3 puts the same facts on the bench: the one key on the map is worth 4 points on the sheet, and it sits behind the highest trust gate there is.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers where each number comes from</span>
+      <h2>Recorded, typed, or not recorded</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">The first data-state question is not "what systems do you have". It is "where does this number come from", asked once per number on the pack. An analyst gets three answers: recorded by a system as a side effect of work, typed by a person, or not recorded anywhere. An engineer needs a fourth, because it is the one a pipeline inherits: exported by a person, on a schedule. At Harbourline that is Priya's 38 CSVs every Monday and the bookkeeper's one export a month, and both of them are calendars you will be building on whether you asked about them or not.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 384" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn page listing four numbers Adeline asked about: sales by outlet, stock on hand, supplier orders placed, and finance's revenue. An arrow traces each to its origin on the right. Sales by outlet comes from a till, recorded as a side effect of every sale. Stock on hand is typed into a spreadsheet that exists in three copies. Supplier orders are not recorded anywhere, because they go over WhatsApp. Finance's revenue arrives exported by a person on a schedule, the bookkeeper once a month by contract, drawn in teal because it is the origin an engineer inherits; Priya's 38 Monday CSVs off the till are the same kind of hand-off.">
+        <defs>
+          <filter id="s2aSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="52" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="s2aHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#9A3412" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="s2aAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2A1A12" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .s2aH { font: 800 12px Inter, sans-serif; fill: #2A1A12; }
+          .s2aL { font: 600 12px Inter, sans-serif; fill: #2A1A12; }
+          .s2aS { font: 400 11px Inter, sans-serif; fill: #6B5448; }
+          .s2aB { font: 800 11px Inter, sans-serif; fill: #084C4C; }
+          .s2aA { font: 700 11px Inter, sans-serif; fill: #9A3412; letter-spacing: .05em; }
+          .s2aN { font: 400 12px Inter, sans-serif; fill: #6B5448; }
+        </style>
+
+        <text class="s2aH" x="30" y="26">EVERY NUMBER SHE ASKED ABOUT, TRACED TO WHERE IT WAS BORN</text>
+        <text class="s2aS" x="30" y="42">four origins; the fourth is the one a pipeline inherits</text>
+
+        <g filter="url(#s2aSk)" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- the page of numbers -->
+          <rect x="40" y="56" width="290" height="284" rx="4" transform="rotate(-0.4 185 198)" fill="#FFFFFF"/>
+          <rect x="56" y="66" width="258" height="24" rx="3" fill="url(#s2aHc)"/>
+          <path d="M56 140 L314 140 M56 200 L314 200 M56 260 L314 260" stroke="#E2CFC3"/>
+          <!-- arrows, row to origin, never crossing -->
+          <path d="M336 114 C420 114 440 93 512 93" marker-end="url(#s2aAr)"/>
+          <path d="M336 174 C420 174 440 167 512 167" marker-end="url(#s2aAr)"/>
+          <path d="M336 234 C420 234 440 241 512 241" stroke-dasharray="5 4" marker-end="url(#s2aAr)"/>
+          <path d="M336 296 C420 296 440 317 512 317" stroke="#0E6B6B" stroke-width="3" marker-end="url(#s2aAr)"/>
+          <!-- origin 1: the till, the doodle anchor -->
+          <rect x="520" y="62" width="330" height="62" rx="8" transform="rotate(-0.5 685 93)" fill="#FDF4EE"/>
+          <rect x="540" y="74" width="30" height="18" rx="2" fill="#FFFFFF"/>
+          <rect x="536" y="94" width="38" height="16" rx="2" fill="#FFFFFF"/>
+          <path d="M546 102 L564 102" stroke="#6B5448"/>
+          <!-- origin 2: typed into a spreadsheet -->
+          <rect x="520" y="136" width="330" height="62" rx="8" transform="rotate(0.4 685 167)" fill="#FFFFFF"/>
+          <!-- origin 3: not recorded, dashed -->
+          <rect x="520" y="210" width="330" height="62" rx="8" transform="rotate(-0.4 685 241)" fill="#FFFFFF" stroke-dasharray="6 5"/>
+          <!-- origin 4: exported by a person on a schedule, the one the figure is about -->
+          <rect x="520" y="284" width="330" height="66" rx="8" transform="rotate(0.4 685 317)" fill="#E4F3F3" stroke="#0E6B6B"/>
+        </g>
+
+        <text class="s2aA" x="64" y="82">THE NUMBERS SHE ASKED ABOUT</text>
+        <text class="s2aL" x="60" y="110">Sales by outlet</text>
+        <text class="s2aS" x="60" y="126">on the Monday report, for the GM</text>
+        <text class="s2aL" x="60" y="170">Stock on hand</text>
+        <text class="s2aS" x="60" y="186">three copies in circulation</text>
+        <text class="s2aL" x="60" y="230">Supplier orders placed</text>
+        <text class="s2aS" x="60" y="246">no number anywhere</text>
+        <text class="s2aB" x="60" y="290">Finance's revenue</text>
+        <text class="s2aS" x="60" y="306">month-end, booked by working day 5</text>
+
+        <text class="s2aL" x="590" y="86">RECORDED by the till</text>
+        <text class="s2aS" x="590" y="102">a side effect of every sale</text>
+        <text class="s2aS" x="590" y="116">product codes differ, SG and MY</text>
+
+        <text class="s2aL" x="536" y="160">TYPED into a spreadsheet</text>
+        <text class="s2aS" x="536" y="176">three copies; Priya treats one as real</text>
+        <text class="s2aS" x="536" y="190">who types it, and when: not asked yet</text>
+
+        <text class="s2aL" x="536" y="234">NOT RECORDED anywhere</text>
+        <text class="s2aS" x="536" y="250">supplier orders go over WhatsApp</text>
+        <text class="s2aS" x="536" y="264">there is no order table</text>
+
+        <text class="s2aB" x="536" y="308">EXPORTED by a person, on a schedule</text>
+        <text class="s2aS" x="536" y="324">bookkeeper in KL, once a month, by contract</text>
+        <text class="s2aS" x="536" y="339">and Priya, 38 CSVs every Monday, off the till</text>
+
+        <text class="s2aN" x="30" y="372">An export is a hand-off with a person and a calendar in it. The pipeline inherits both.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the teal origin is the one an engineer inherits: a person and a calendar sitting between a system and everything you build</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Four origins, and the question that finds them<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Take the month-end pack and the Monday report and go down them one number at a time. For each, ask the bank's question g05: <strong>"How is the report made today? Show me the file, and tell me who builds it."</strong> with its teach-back said first: "The current file is the spec. Every step done by hand is a step I have to reproduce exactly before I can improve it." She does not need to know what a source system is to answer. She knows that Priya downloads one CSV per outlet on Monday, 38 files, pastes them into a spreadsheet, and that a macro somebody wrote in 2019 merges them. Six hours.</p>
+        <p>The four answers carry four different builds. A number <strong>recorded by a system</strong> arrives on its own, in the same shape every time: sales at the till, one cloud POS vendor, a CSV per outlet, product codes that differ between Singapore and Malaysia. A number <strong>typed by a person</strong> arrives when somebody types it, in whatever shape they typed: the stock spreadsheet, in three copies. A number <strong>not recorded</strong> cannot be moved at all until somebody writes it down: supplier orders go over WhatsApp and there is no order table anywhere. And a number <strong>exported by a person on a schedule</strong> arrives as often as that person and their calendar allow: Priya's Monday files, and the bookkeeper in Kuala Lumpur, who exports once a month.</p>
+        <p>Say the fourth case out loud when you hear it, because it is the one a pipeline silently inherits. You can schedule a job to run every hour; it still reads a file that changed once a week or once a month. Ask g19 next: <strong>"How often does each system get exported today, and by whom?"</strong> with "How often a system is read today is a ceiling I inherit until a contract or a login changes it." At Harbourline the ceiling on finance's side is written into a contract: one export a month, and more is a contract change. That is a data-state fact, not a legal footnote, and it is why "pull everything daily" is a sentence you should never say before you have asked.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why data preparation eats the project, quoted as it stands<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Two sources are usually run together into one number, and they should not be. In 2014 Steve Lohr reported in <em>The New York Times</em> that data scientists spend 50 percent to 80 percent of their time collecting and preparing data before it can be explored. In 2016 CrowdFlower's data science report found respondents spending 60 percent of their time cleaning and organising data and a further 19 percent collecting it. Two sources, two methods, two shapes of answer: one a range for collecting and preparing together, the other two separate figures. Quote whichever you use as it stands, and never fold them into one cleaning figure taken from the top of Lohr's range, because nobody measured that number.</p>
+        <p>The point for door 4 is the reason behind both. Preparation time is mostly the cost of the typed, the absent and the exported: reconciling three stock copies, finding out that refunds live only in the accounting system, discovering in week three that the finance export you planned to read nightly exists once a month. Every minute spent asking "where does this come from, and how does it reach you" is a minute not spent in week three finding out the hard way.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The refunds nobody would see.</strong> A constructed case, but the shape is common. Asked "where does finance's revenue number come from, step by step?" (g06, with "Two numbers built along two paths usually disagree about timing long before they disagree about truth."), Adeline walked the path: bank settlements into the accounting system, cards landing two days late, cash deposited weekly. Then, almost as an aside, she added that refunds are processed in the accounting system and the POS never sees them. A pipeline that copied the POS nightly into a warehouse would have been on time every night and short by every refund, forever. The number was recorded, just not in the system anyone was planning to read.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers the maturity ladder, asked per system</span>
+      <h2>Five rungs, as questions</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">Once you know where a number comes from, the next thing is how mature the habit around each system is: whether it is done the same way each time, whether anyone wrote that way down, whether anyone checks. DAMA-DMBOK's maturity model gives five level names for exactly that. She never hears the names. She hears five plain questions, and you ask them per system, not per company, because one company holds several rungs at once. At Harbourline the till sits well above the stock spreadsheet, and the Monday merge sits at the bottom. The ladder in full depth is in <a href="https://phoebefu6.github.io/learn-asking-right-questions-as-da-with-phoebe/courses/02-reading-their-data-state.html">the analyst's session 2</a>; tonight is the engineer's reading of it.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 472" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn ladder with five rungs named as DAMA-DMBOK names them, from Initial or ad hoc at the bottom to Optimized at the top, each with the plain question that tests for it in a panel on the right. On the left, tags show where each Harbourline system sits from her answers. On rung 1: the stock sheets, and the Monday merge, drawn in teal because it is the one the figure is about: Priya fixes it by hand and nobody is told. On rung 2: the till, which records every sale the same way, and the ledger export, which the bookkeeper sends once a month. Rungs 3 to 5 are empty because nothing she said reaches them. A small figure of Adeline stands at the upper left.">
+        <defs>
+          <filter id="s2bSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="63" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="s2bHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#9A3412" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="s2bAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2A1A12" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .s2bH { font: 800 12px Inter, sans-serif; fill: #2A1A12; }
+          .s2bL { font: 600 12px Inter, sans-serif; fill: #2A1A12; }
+          .s2bS { font: 400 11px Inter, sans-serif; fill: #6B5448; }
+          .s2bV { font: 800 16px Inter, sans-serif; fill: #7C2D12; }
+          .s2bW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .s2bN { font: 400 12px Inter, sans-serif; fill: #6B5448; }
+        </style>
+
+        <text class="s2bH" x="30" y="26">FIVE RUNGS AS QUESTIONS, ONE READING PER SYSTEM</text>
+        <text class="s2bS" x="30" y="44">rung names from DAMA-DMBOK; the questions are ours; each tag is a reading from her answers</text>
+
+        <g filter="url(#s2bSk)" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- the rails -->
+          <path d="M150 66 L146 430" stroke-width="3"/>
+          <path d="M236 66 L240 430" stroke-width="3"/>
+          <!-- five rungs, bottom is rung 1 -->
+          <path d="M148 410 L238 410" stroke-width="3"/>
+          <path d="M148 330 L238 330" stroke-width="3"/>
+          <path d="M149 250 L237 250" stroke-width="3"/>
+          <path d="M149 170 L237 170" stroke-width="3"/>
+          <path d="M150 90 L236 90" stroke-width="3"/>
+          <!-- Adeline, the doodle anchor -->
+          <circle cx="80" cy="104" r="12"/>
+          <path d="M58 144 C64 122 96 122 102 144"/>
+          <!-- rung 2 tags -->
+          <rect x="20" y="306" width="120" height="24" rx="5" transform="rotate(-0.8 80 318)" fill="#FFFFFF"/>
+          <rect x="20" y="334" width="120" height="24" rx="5" transform="rotate(0.7 80 346)" fill="#FFFFFF"/>
+          <!-- rung 1 tags: stock sheets, and the Monday merge in teal -->
+          <rect x="20" y="386" width="120" height="24" rx="5" transform="rotate(0.6 80 398)" fill="#FDF4EE"/>
+          <rect x="20" y="414" width="120" height="24" rx="5" transform="rotate(-0.7 80 426)" fill="#0E6B6B" stroke="#0E6B6B"/>
+          <!-- the question panels -->
+          <rect x="420" y="75" width="430" height="30" rx="6" transform="rotate(-0.3 635 90)" fill="#FDF4EE"/>
+          <rect x="420" y="155" width="430" height="30" rx="6" transform="rotate(0.3 635 170)" fill="#FDF4EE"/>
+          <rect x="420" y="235" width="430" height="30" rx="6" transform="rotate(-0.3 635 250)" fill="#FDF4EE"/>
+          <rect x="420" y="315" width="430" height="30" rx="6" transform="rotate(0.3 635 330)" fill="#FDF4EE"/>
+          <rect x="420" y="395" width="430" height="30" rx="6" transform="rotate(-0.3 635 410)" fill="#FDF4EE"/>
+        </g>
+
+        <text class="s2bL" x="258" y="94">5 Optimized</text>
+        <text class="s2bL" x="258" y="174">4 Managed</text>
+        <text class="s2bL" x="258" y="254">3 Defined</text>
+        <text class="s2bL" x="258" y="334">2 Repeatable</text>
+        <text class="s2bL" x="258" y="414">1 Initial / Ad hoc</text>
+
+        <text class="s2bS" x="432" y="94">"Has it got better on its own in the last year?"</text>
+        <text class="s2bS" x="432" y="174">"Does anyone check afterwards whether it was right?"</text>
+        <text class="s2bS" x="432" y="254">"Is any of it written down?"</text>
+        <text class="s2bS" x="432" y="334">"Is it done the same way every time?"</text>
+        <text class="s2bS" x="432" y="414">"When the number is wrong, who fixes it, and does anyone find out?"</text>
+
+        <text class="s2bS" x="80" y="166" text-anchor="middle">Adeline, asked</text>
+        <text class="s2bS" x="80" y="180" text-anchor="middle">per system</text>
+
+        <text class="s2bL" x="80" y="322" text-anchor="middle">the till</text>
+        <text class="s2bL" x="80" y="350" text-anchor="middle">ledger export</text>
+        <text class="s2bL" x="80" y="402" text-anchor="middle">stock sheets</text>
+        <text class="s2bW" x="80" y="430" text-anchor="middle">Monday merge</text>
+
+        <text class="s2bN" x="30" y="462">Till: same way every sale. Merge: fixed by hand, no log. Two rungs in one company, and no rung 0.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the teal tag is the merge Priya fixes by hand without telling anyone, and it is the rung your pipeline would be copying</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The ladder, asked per system<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>DAMA-DMBOK, 2nd edition, chapter 15, names five levels of data management maturity: <strong>Initial/Ad hoc, Repeatable, Defined, Managed, Optimized</strong>. Five, not six: DMBOK has no level 0. The names are the whole of what is borrowed, and they are reported from summaries rather than read from the book. The questions beside each rung are ours, written so a person who runs pharmacies can answer them about her own systems.</p>
+        <p>Ask them once per box on the map. The <strong>till</strong>: it records every sale the same way, so it is at least rung 2; whether anything about it is written down is a question you have not asked yet, so you do not place it higher. The <strong>ledger export</strong>: the bookkeeper sends it once a month by contract, the same way each time, rung 2 on what you know. The <strong>stock sheets</strong>: three copies in circulation and none declared real, rung 1. The <strong>Monday merge</strong>: 38 files pasted by hand and a macro somebody wrote in 2019, and the bottom-rung question gets the decisive answer, asked as g20: <strong>"When a number in the report is wrong, who fixes it, and does anyone find out?"</strong> Priya fixes it by hand in the spreadsheet; nobody is told; there is no record of what changed. Rung 1.</p>
+        <p>Write the rung beside each system in your notes and <strong>never tell her the number</strong>. "Your merge is a 1" is a grade, and a grade ends a conversation that was going well. What the reading gives you, as an engineer, is where the pipeline must not start: never copy the lowest rung faithfully and call it done. A job that reproduces the Monday merge on a schedule reproduces the silent fixes too, or loses them, and either way the number changes without a record. The real assessment, with the practices behind each level, is a governance discipline, taught in the <a href="https://phoebefu6.github.io/learn-governance-101-with-phoebe/">Governance 101 course</a>; in a discovery meeting the ladder is an interview aid and nothing more.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Two other frames, one line each<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Joe Reis and Matt Housley, in <em>Fundamentals of Data Engineering</em> (O'Reilly, 2022), describe companies as starting with data, scaling with data or leading with data, reported here from summaries rather than a page. Harbourline is starting with data: one recorded source, one person who assembles the report, a bookkeeper on a monthly contract, and a request that is really a request to be able to answer an auditor. Whatever you propose should fit a company at that stage, which rules out most of what a platform vendor would propose.</p>
+        <p>Leandro DalleMule and Thomas H. Davenport, in "What's Your Data Strategy?" (<em>Harvard Business Review</em>, May-June 2017, reported), ask whether a company needs a single source of truth or several fit-for-purpose versions of the truth. Harbourline has both problems by accident: the POS and finance are two versions of revenue built along two paths, and the stock sheet is three versions of one thing with no agreed copy. The frame is useful because it names a choice. A company can decide to run two versions of revenue on purpose, one for Monday and one for the auditor; it should not discover it has.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The silent fix.</strong> Constructed, and typical. Adeline answered the rung-2 question about the Monday report with "yes, Priya does it every week", which sounds Repeatable. The bottom-rung question, asked next, got a pause and then "well, if something looks off she just corrects it". Nobody is told, and nothing records what changed. The teach-back for that question says why it matters to an engineer in one line: "A silent fix is a second source of truth. I would rather have a wrong number with a log than a right number with no history." The week you automate the merge, the corrections stop, and the Monday numbers change in a way nobody can explain, because nobody knew they had been changing all along.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers owners, logins, the one key and the real copy</span>
+      <h2>Owners, logins, the one key, and the real copy</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">The last data-state facts are about people. Who can say yes to an export, who can actually log in, how often each box is read, and which copy somebody has declared real. At Harbourline the vendor API has never been used by anyone; the accounting system belongs to an outsourced bookkeeper whose contract allows one export a month; refunds exist only in accounting; three stock spreadsheets circulate and the one Priya treats as real lives on her laptop; and one person, Kenneth, holds the only POS admin login. Kenneth is leaving in January, and she has not told the team.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 422" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Harbourline lineage map, hand-drawn. On the left, the till, one cloud POS vendor, with its API never used and product codes that differ between Singapore and Malaysia. Below it, a teal tag: the one key, Kenneth's login. Three rows run right from the till. Row one: bank settlement, cards landing two days late and cash deposited weekly, then the ledger kept by the bookkeeper in Kuala Lumpur where refunds exist, exported once a month, then finance's number, booked by working day 5. Row two: the POS export of 38 CSVs pulled by Priya on Mondays, then Priya's merge with the 2019 macro and silent fixes, then the Monday report the GM reads. Row three, reached by a dashed arrow because nobody has said how a sale reaches it: three stock sheets, then Priya's laptop copy, which she treats as real and nobody has declared real. Every box carries an owner or login and how often it is read.">
+        <defs>
+          <filter id="s2cSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="74" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="s2cHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#9A3412" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="s2cAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2A1A12" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .s2cH { font: 800 12px Inter, sans-serif; fill: #2A1A12; }
+          .s2cL { font: 600 12px Inter, sans-serif; fill: #2A1A12; }
+          .s2cS { font: 400 11px Inter, sans-serif; fill: #6B5448; }
+          .s2cB { font: 800 11px Inter, sans-serif; fill: #084C4C; }
+          .s2cA { font: 700 11px Inter, sans-serif; fill: #9A3412; }
+          .s2cW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .s2cN { font: 400 12px Inter, sans-serif; fill: #6B5448; }
+        </style>
+
+        <text class="s2cH" x="30" y="26">EVERY SYSTEM ONE NUMBER PASSES THROUGH, AS SHE CAN READ IT</text>
+        <text class="s2cS" x="30" y="42">owner or login and how often read on every box; one key; one hand-off nobody has described</text>
+
+        <g filter="url(#s2cSk)" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- the till, left column, with the doodle anchor -->
+          <rect x="24" y="160" width="176" height="110" rx="8" transform="rotate(-0.5 112 215)" fill="#FDF4EE"/>
+          <rect x="162" y="168" width="24" height="14" rx="2" fill="#FFFFFF"/>
+          <path d="M166 182 L166 190 L182 190 L182 182"/>
+          <!-- the one key -->
+          <rect x="24" y="284" width="176" height="26" rx="6" transform="rotate(0.4 112 297)" fill="#0E6B6B" stroke="#0E6B6B"/>
+          <!-- row 1: bank, ledger, finance -->
+          <rect x="270" y="50" width="180" height="84" rx="6" transform="rotate(0.4 360 92)" fill="#FFFFFF"/>
+          <rect x="480" y="50" width="180" height="84" rx="6" transform="rotate(-0.3 570 92)" fill="#FFFFFF"/>
+          <rect x="690" y="50" width="180" height="84" rx="6" transform="rotate(0.5 780 92)" fill="#FFFFFF"/>
+          <!-- row 2: export, merge, report -->
+          <rect x="270" y="176" width="180" height="84" rx="6" transform="rotate(-0.4 360 218)" fill="#FFFFFF"/>
+          <rect x="480" y="176" width="180" height="84" rx="6" transform="rotate(0.3 570 218)" fill="#FFFFFF"/>
+          <rect x="690" y="176" width="180" height="84" rx="6" transform="rotate(-0.5 780 218)" fill="#FDF4EE"/>
+          <!-- row 3: stock sheets, the laptop copy -->
+          <rect x="270" y="302" width="180" height="84" rx="6" transform="rotate(0.5 360 344)" fill="#FFFFFF"/>
+          <rect x="480" y="302" width="180" height="84" rx="6" transform="rotate(-0.4 570 344)" fill="#FDF4EE" stroke="#9A3412"/>
+          <!-- till to each row; the stock hand-off is dashed because nobody has described it -->
+          <path d="M204 180 C236 180 236 92 264 92" marker-end="url(#s2cAr)"/>
+          <path d="M204 218 L264 218" marker-end="url(#s2cAr)"/>
+          <path d="M204 252 C236 252 236 344 264 344" stroke-dasharray="5 5" marker-end="url(#s2cAr)"/>
+          <!-- hand-offs along each row -->
+          <path d="M454 92 L476 92" marker-end="url(#s2cAr)"/>
+          <path d="M664 92 L686 92" marker-end="url(#s2cAr)"/>
+          <path d="M454 218 L476 218" marker-end="url(#s2cAr)"/>
+          <path d="M664 218 L686 218" marker-end="url(#s2cAr)"/>
+          <path d="M454 344 L476 344" marker-end="url(#s2cAr)"/>
+        </g>
+
+        <text class="s2cL" x="36" y="184">the till (POS)</text>
+        <text class="s2cS" x="36" y="202">one cloud vendor</text>
+        <text class="s2cS" x="36" y="217">API: never used</text>
+        <text class="s2cS" x="36" y="232">SG and MY codes differ</text>
+        <text class="s2cS" x="36" y="247">read: Monday CSV export</text>
+        <text class="s2cW" x="112" y="301" text-anchor="middle">the one key: Kenneth</text>
+        <text class="s2cS" x="24" y="330">dashed: nobody has said</text>
+        <text class="s2cS" x="24" y="345">how a sale reaches the</text>
+        <text class="s2cS" x="24" y="360">stock sheet</text>
+
+        <text class="s2cL" x="282" y="72">bank settlement</text>
+        <text class="s2cS" x="282" y="89">cards land 2 days late</text>
+        <text class="s2cS" x="282" y="104">cash deposited weekly</text>
+        <text class="s2cS" x="282" y="119">owner, login: not asked</text>
+
+        <text class="s2cL" x="492" y="72">the ledger</text>
+        <text class="s2cS" x="492" y="89">bookkeeper in KL</text>
+        <text class="s2cS" x="492" y="104">refunds exist only here</text>
+        <text class="s2cS" x="492" y="119">exports once a month</text>
+
+        <text class="s2cL" x="702" y="72">finance's number</text>
+        <text class="s2cS" x="702" y="89">booked by working day 5</text>
+        <text class="s2cS" x="702" y="104">more exports: contract</text>
+        <text class="s2cS" x="702" y="119">read: monthly</text>
+
+        <text class="s2cL" x="282" y="198">the POS export</text>
+        <text class="s2cS" x="282" y="215">38 CSVs, one per outlet</text>
+        <text class="s2cS" x="282" y="230">pulled by Priya, Mondays</text>
+        <text class="s2cS" x="282" y="245">read: weekly</text>
+
+        <text class="s2cL" x="492" y="198">Priya's merge</text>
+        <text class="s2cS" x="492" y="215">pastes 38 files in</text>
+        <text class="s2cS" x="492" y="230">2019 macro merges them</text>
+        <text class="s2cS" x="492" y="245">fixes: by hand, no log</text>
+
+        <text class="s2cL" x="702" y="198">the Monday report</text>
+        <text class="s2cS" x="702" y="215">the GM asks every Monday</text>
+        <text class="s2cS" x="702" y="230">feeds Tuesday reorder</text>
+        <text class="s2cS" x="702" y="245">read: weekly</text>
+
+        <text class="s2cL" x="282" y="324">stock sheets, x3</text>
+        <text class="s2cS" x="282" y="341">3 copies in circulation</text>
+        <text class="s2cS" x="282" y="356">owner, login: not asked</text>
+        <text class="s2cS" x="282" y="371">read: not asked yet</text>
+
+        <text class="s2cL" x="492" y="324">Priya's laptop copy</text>
+        <text class="s2cS" x="492" y="341">Priya treats it as real</text>
+        <text class="s2cA" x="492" y="356">declared real: nobody</text>
+
+        <text class="s2cN" x="700" y="334">the question you send</text>
+        <text class="s2cN" x="700" y="350">with it: which arrow</text>
+        <text class="s2cN" x="700" y="366">is wrong?</text>
+
+        <text class="s2cN" x="30" y="410">Every box names a person, or says "not asked". She can correct a box; she could never correct a schema.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the teal tag is one login held by one person who is leaving, and every row on the map starts behind it</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Every hand-off is a place the number changes<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The map starts with one question, g08: <strong>"Which systems does one sale touch, from the till to the bank to the ledger?"</strong> Say the teach-back first: "Every hand-off between systems is a place a number can change. I am counting the hand-offs." She can answer that without knowing a single technical word, and she answers in order: the till, the bank settlement, the ledger the bookkeeper keeps. That row alone explains most of the two percent: card settlements land two days late, cash is deposited weekly, and refunds exist only in the ledger. Two numbers built along two paths, disagreeing about timing before truth.</p>
+        <p>Then ask the same question of the Monday side and you get the second row: the till again, 38 CSVs pulled by Priya, her merge, the report. Notice what you do not get. Nobody has told you how a sale on the till ends up as a line in the stock spreadsheet: whether someone counts shelves, types from the till, or copies from last week. Draw that hand-off dashed and label it unknown. A dashed arrow on the map is not a gap in your drawing; it is the next question you ask.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The key, asked by name, after trust<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Question g09 has to be asked with a name in the answer: <strong>"Who can log in to each of those, and pull an export?"</strong> Teach-back: "Access is the first blocker on most data projects, so I ask early and I ask by name." "IT can" is not an answer. "Kenneth can, and only Kenneth" is, and it is the answer that makes you ask what happens in January.</p>
+        <p>Kenneth's leaving date does not come out on the first question, whatever you ask. On the bench it sits behind a trust gate of 3, the highest on the sheet: she volunteers it only after enough open questions, each with its reason said aloud, have shown you are helping her and not auditing her, and every jargon question you ask on the way takes a point of that trust back. It is worth 4 points on the sheet, as much as the outcome itself. That is why the widest door is not the first one: one outcome question first, the month-end and Monday walk-throughs, the systems and the stock copies, and then the login, by name. Ask it cold and you get "our IT guy". Session 3 shows which meeting orders reach it in 45 minutes.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Declare the real copy before you move it<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Question g11: <strong>"Where do the stock numbers live, and which copy is the real one?"</strong> Teach-back: "A file that exists three times has no real copy until someone declares one. I need that declared before I move it anywhere." At Harbourline the answer is three spreadsheets in circulation and one on Priya's laptop that she treats as real. Treated is not declared. Nobody with the authority to say so has said it, which means the day your pipeline picks one, you have declared it for them, silently, and the other two copies keep being edited by the people who think theirs is the one.</p>
+        <p>The same logic runs through every box. The vendor API is a fact about the vendor, not about Harbourline: it exists and nobody has ever used it, so it is a possibility, not a source. The loyalty data sits with the app vendor and an export costs extra and needs a contract clause (g12: "Owned means who can say yes to an export. That is usually a contract, not a login."). The bookkeeper's one export a month is in her contract. Each of those is a data-state fact with a signature on it, and each sets a ceiling on your pipeline that no schedule can lift.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The API nobody has used.</strong> Constructed, and common. The vendor's brochure says the POS has an API, and an engineer who hears "API" starts designing the integration before the meeting is over. Asked plainly who can log in and pull an export, Adeline said Kenneth, and only Kenneth, and that nobody had ever touched the API. Asked whether they had tried to connect the systems before, she said a vendor integration project two years ago stalled the week Kenneth went on leave and never restarted. The API is on the map, in the till box, with "never used" beside it. The one key is next to it. The last attempt already showed where this one would stall.</p>
+    </div>
+
+    <div class="tryrow" data-fn="wordcount" data-multiline="1" data-title="Write the declared-copy question for your own request" data-hint="For a file or table you would move, write the question that gets back who declared it the real copy, by name, and the one plain sentence you would say first about why you are asking. Two sentences." data-seed="" data-cta="Count it"></div>
+  </section>
+
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>Draw the lineage from her answers</h2>
+      <span class="tag demo">★ 22 min · everyone writes</span>
+    </div>
+    <p class="lede">One page, drawn by hand, from answers a business person gave in plain words. Take the request you brought from session 1, or Adeline's if you did not bring one, and draw the lineage you will send her within a day of the meeting: every number on the pack, every system it passes through, every hand-off, and on every box an owner, a login, how often it is read and which copy is declared real. Nothing on it is a schema. Every arrow is something she can correct.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn blank lineage template on a page: a row of three system boxes joined by arrows, running down to one box for the number on the pack. The first system box is filled in for the till, in teal: login Kenneth only, read weekly on Mondays, hands off to 38 CSVs. The other two boxes are dashed and empty, and the second arrow is dashed because it is still to be asked. In the margin on the right, six numbered questions guide the filling, ending with which arrow is wrong.">
+        <defs>
+          <filter id="s2dSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="85" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="s2dHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#9A3412" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="s2dAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2A1A12" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .s2dH { font: 800 12px Inter, sans-serif; fill: #2A1A12; }
+          .s2dL { font: 600 12px Inter, sans-serif; fill: #2A1A12; }
+          .s2dS { font: 400 11px Inter, sans-serif; fill: #6B5448; }
+          .s2dB { font: 800 11px Inter, sans-serif; fill: #084C4C; }
+          .s2dA { font: 700 11px Inter, sans-serif; fill: #9A3412; letter-spacing: .05em; }
+          .s2dN { font: 400 12px Inter, sans-serif; fill: #6B5448; }
+        </style>
+
+        <text class="s2dH" x="30" y="26">THE BLANK LINEAGE, WITH THE SIX QUESTIONS THAT FILL IT</text>
+
+        <g filter="url(#s2dSk)" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- the page, the doodle anchor -->
+          <rect x="40" y="46" width="570" height="250" rx="4" transform="rotate(-0.4 325 171)" fill="#FFFFFF"/>
+          <!-- three system boxes, the first filled -->
+          <rect x="58" y="66" width="160" height="96" rx="6" transform="rotate(-0.5 138 114)" fill="#E4F3F3" stroke="#0E6B6B"/>
+          <rect x="242" y="66" width="160" height="96" rx="6" transform="rotate(0.5 322 114)" stroke="#E2CFC3" stroke-dasharray="5 4"/>
+          <rect x="426" y="66" width="160" height="96" rx="6" transform="rotate(-0.4 506 114)" stroke="#E2CFC3" stroke-dasharray="5 4"/>
+          <!-- hand-offs: one drawn, two to ask -->
+          <path d="M222 114 L238 114" marker-end="url(#s2dAr)"/>
+          <path d="M406 114 L422 114" stroke="#E2CFC3" stroke-dasharray="3 3"/>
+          <path d="M506 168 C500 196 440 204 420 214" stroke="#E2CFC3" stroke-dasharray="4 4" marker-end="url(#s2dAr)"/>
+          <!-- the number on the pack -->
+          <rect x="200" y="218" width="250" height="56" rx="6" transform="rotate(0.4 325 246)" fill="url(#s2dHc)"/>
+          <rect x="222" y="232" width="206" height="30" rx="4" fill="#FFFFFF"/>
+          <!-- margin rule -->
+          <path d="M628 46 L628 296" stroke="#E2CFC3"/>
+        </g>
+
+        <text class="s2dB" x="70" y="88">the till (POS)</text>
+        <text class="s2dS" x="70" y="106">login: Kenneth only</text>
+        <text class="s2dS" x="70" y="121">read: weekly, Mondays</text>
+        <text class="s2dS" x="70" y="136">hands off to: 38 CSVs</text>
+        <text class="s2dS" x="70" y="151">declared: not asked</text>
+
+        <text class="s2dS" x="322" y="118" text-anchor="middle">system 2</text>
+        <text class="s2dS" x="506" y="118" text-anchor="middle">system 3</text>
+        <text class="s2dL" x="325" y="251" text-anchor="middle">the number on the pack</text>
+
+        <text class="s2dA" x="640" y="66">IN THE MARGIN</text>
+        <text class="s2dL" x="640" y="92">1 Which numbers, in her words?</text>
+        <text class="s2dL" x="640" y="118">2 Which systems, in order?</text>
+        <text class="s2dL" x="640" y="144">3 Owner and login, by name?</text>
+        <text class="s2dL" x="640" y="170">4 How often is each read?</text>
+        <text class="s2dL" x="640" y="196">5 Which copy is declared real?</text>
+        <text class="s2dB" x="640" y="222">6 "Which arrow is wrong?"</text>
+        <text class="s2dS" x="640" y="240">the line you send it with</text>
+
+        <text class="s2dN" x="30" y="318">One number, one row of boxes. If a row needs more than six boxes, split the number, not the page.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - one box is filled to show the depth: a login by name, a read frequency, the next hand-off, and whether its copy was declared</figcaption>
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <p><strong>List every number on the pack, in her words.</strong> Not the tables you would design; the numbers she reads, and who reads them. Each line on this list becomes one row of boxes on the map.</p>
+        <div class="prompt-box good"><span class="label">★ Step 1 · the numbers she reads</span>1. Revenue for month-end: finance's number, booked by the fifth working day
+2. Revenue as the POS shows it: the other number, about two percent away
+3. Sales by outlet, Monday: which outlets are down (the regional GM's question)
+4. Stock on hand: from the stock spreadsheet</div>
+      </div>
+      <div class="step">
+        <p><strong>One row of systems per number, in the order the number travels.</strong> Ask "which systems does one sale touch?" and write the boxes left to right as she names them. Beside each row, write the question that found it, so you can repeat it next time. Say the teach-back first every time; it is why she answers step by step instead of "from the system".</p>
+        <div class="prompt-box good"><span class="label">★ Step 2 · the path of each number</span>Finance revenue   till -&gt; bank settlement -&gt; ledger (bookkeeper) -&gt; month-end pack
+                  Found by: "which systems does one sale touch, from the till to the bank to the ledger?"
+POS revenue       till -&gt; POS export
+                  Found by: "where does finance's revenue number come from, step by step?" (the contrast)
+Sales by outlet   till -&gt; 38 CSVs -&gt; Priya + 2019 macro -&gt; Monday report
+                  Found by: "how is the report made today? Show me the file"
+Stock on hand     till -?-&gt; stock sheet x3 -&gt; Priya's laptop copy
+                  Found by: "where do the stock numbers live?"   The -?- hand-off: NOT DESCRIBED YET</div>
+      </div>
+      <div class="step">
+        <p><strong>Owner and login on every box, by name.</strong> "Owner" means who can say yes to a change or an export. "Login" means who can actually get in. They are often different people, and one of them is often nobody. Write the name, or "nobody", or "not asked"; never a department.</p>
+        <div class="prompt-box good"><span class="label">★ Step 3 · owner and login, by name</span>Till (POS)        vendor: one cloud POS     admin login: Kenneth (only)   leaving January, team not told
+Vendor API        exists                    used by: nobody, ever
+Bank settlement   not asked                 not asked
+Ledger            outsourced bookkeeper, KL  export: once a month, by contract; more = contract change
+Stock sheets x3   not asked                 Priya's laptop copy is the one she treats as real
+Product master    owner: nobody             two outlets renamed products themselves last year
+Loyalty app       the app vendor            export costs extra + a contract clause</div>
+      </div>
+      <div class="step">
+        <p><strong>How often each box is read today, and by whom.</strong> This is the ceiling you inherit. Write the frequency the box is actually read, not the frequency you would like, and write the decision it has to reach in time.</p>
+        <div class="prompt-box good"><span class="label">★ Step 4 · read frequency against the decision</span>Till -&gt; POS export    weekly, Monday, by Priya       feeds: reorder decision, Tuesday noon   (weekly is fine)
+Bank settlement       cards 2 days late; cash weekly  feeds: finance's revenue               (the two percent)
+Ledger export         monthly, by contract            feeds: month-end, needed by day 3, checked by day 5
+Stock sheets          not asked                       feeds: not asked</div>
+      </div>
+      <div class="step">
+        <p><strong>Mark which copy is declared real, and by whom.</strong> For every box that exists more than once, write the copy somebody with the authority to say so has declared real. If nobody has, write "nobody" in capitals. That box is your first proposal, before any pipeline: somebody declares a copy, and then you move it.</p>
+        <div class="prompt-box good"><span class="label">★ Step 5 · the map, as it goes in the email</span>             +------------+   +-------------+   +-------------+
+        +---&gt;| bank       |--&gt;| ledger      |--&gt;| finance's   |
+        |    | cards +2d  |   | KL, monthly |   | number      |
+        |    +------------+   +-------------+   +-------------+
++-------+--------+
+| till (POS)     |   +------------+   +-------------+   +-------------+
+| login: KENNETH |--&gt;| 38 CSVs    |--&gt;| Priya+macro |--&gt;| Monday      |
+| [the one key]  |   | Mondays    |   | no log      |   | report      |
++-------+--------+   +------------+   +-------------+   +-------------+
+        :
+        : (how? not described yet)
+        v
+   +------------+   +---------------------------+
+   | stock x3   |--&gt;| Priya's laptop copy       |
+   |            |   | declared real by: NOBODY  |
+   +------------+   +---------------------------+</div>
+      </div>
+      <div class="step">
+        <p><strong>Ask which arrow is wrong.</strong> Not a summary, not a proposal, not a data model. One sentence that says what the map is and asks her to correct the arrows, sent within a day while she still remembers what she told you. The arrow she corrects is the one your pipeline would have got wrong.</p>
+        <div class="prompt-box good"><span class="label">★ Step 6 · the covering line</span>Hi Adeline, here is every place I understood a sale travels before it becomes a number; which arrow is wrong?</div>
+        <div class="prompt-box bad"><span class="label">The same email, as it is usually sent</span>Hi Adeline, please find attached the proposed ingestion architecture: CDC from the POS into a bronze layer, a nightly ledger sync, and a reconciled revenue mart. Let me know if you have any questions.</div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>Declare, then move.</strong> A pipeline that copies an undeclared file makes the disagreement faster, not smaller. The map makes the declaration her decision, on one page, before anything runs. Session 5 turns the "nobody" boxes into the first joint project; session 6 folds the corrected map into the one-page brief.</p>
+    </div>
+  </section>
+
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before session 3</h2>
+      <span class="tag exercise">30 min</span>
+    </div>
+    <ol>
+      <li><strong>Draw the lineage for your own request.</strong> Every number on the pack, one row of systems per number, every hand-off drawn. Any hand-off nobody has described goes in dashed and labelled unknown; that is the question you ask next.</li>
+      <li><strong>Find the one key.</strong> Somewhere on your map is a login, a laptop, a contract or a person that a whole row passes through. Mark it. Write down what happens the week that person is away.</li>
+      <li><strong>Write the read frequency on every box.</strong> How often it is read today, by whom, and the decision it has to reach. Circle any box where the frequency is set by a contract rather than a schedule.</li>
+      <li><strong>Bring the map to session 3.</strong> The bench prices every fact on it, and you will see which boxes most meeting orders never fill.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and session 2 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · Three stock spreadsheets are in circulation and Priya treats the one on her laptop as real. Why does a copy have to be declared real before you move it?</p>
+      <button class="qopt" type="button">A · It does not; load all three and let the dashboard average them</button>
+      <button class="qopt" type="button">B · Because the laptop copy is the newest, so it should be picked automatically</button>
+      <button class="qopt" type="button">C · Because the day a pipeline picks one, you have declared it for them, silently, while the other two keep being edited by people who think theirs is the one; a copy nobody declared moves the disagreement faster instead of settling it</button>
+      <button class="qopt" type="button">D · Because moving files requires the vendor's permission</button>
+      <p class="qwhy">"A file that exists three times has no real copy until someone declares one." Treated is not declared. The declaration is her decision, which is why it goes on the map before anything runs.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · The bookkeeper's contract allows one export a month, and more is a contract change. Why is that a data-state fact and not a legal footnote?</p>
+      <button class="qopt" type="button">A · Because how often a system is read today is a ceiling you inherit until a contract or a login changes it; a job scheduled daily still reads a ledger that is exported monthly, so the contract sets the freshness of finance's number</button>
+      <button class="qopt" type="button">B · It is a legal footnote; the engineer can ask the bookkeeper for daily exports informally</button>
+      <button class="qopt" type="button">C · Because the auditor needs to see the contract</button>
+      <button class="qopt" type="button">D · Because contracts belong in the constraints door, so it can be ignored at door 4</button>
+      <p class="qwhy">It is both a constraint and a data-state fact, and at door 4 it is the one that decides your design: "pull everything daily" is wrong before you have written a line.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="3">
+      <p class="qtext">3 · Kenneth holds the only POS admin login and is leaving in January. Why does that fact only come out once trust exists?</p>
+      <button class="qopt" type="button">A · Because Adeline does not know it</button>
+      <button class="qopt" type="button">B · Because access questions should never be asked in a first meeting</button>
+      <button class="qopt" type="button">C · Because it is an HR matter and belongs to a different meeting</button>
+      <button class="qopt" type="button">D · Because it is sensitive, and she has not told the team: it sits behind the highest trust gate on the sheet, reached only after open questions with their reasons said aloud, so one outcome question goes first and the login is asked by name, later</button>
+      <p class="qwhy">Ask who holds the admin login cold and you get "our IT guy". Ask it after the walk-throughs, with the teach-backs in between, and you get the name and the date. On the bench it is worth 4 points behind a gate of 3.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Five maturity level names: Initial/Ad hoc, Repeatable, Defined, Managed, Optimized</span><span class="note">DAMA International, DAMA-DMBOK, 2nd ed., Technics Publications, 2017, ch. 15; reported from summaries. DMBOK has no level 0. The interview question beside each rung, and the reading per system, are ours, not DAMA's</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">50 percent to 80 percent of time collecting and preparing data</span><span class="note">Steve Lohr, "For Big-Data Scientists, 'Janitor Work' Is Key Hurdle to Insights", The New York Times, 17 Aug 2014; quoted as a range, as printed</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">60 percent cleaning and organising, plus 19 percent collecting</span><span class="note">CrowdFlower, 2016 Data Science Report; two separate figures, never combined with Lohr's range into one number</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Starting with data, scaling with data, leading with data</span><span class="note">Joe Reis and Matt Housley, Fundamentals of Data Engineering, O'Reilly, 2022; reported from summaries, chapter not confirmed so none is cited</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Single source of truth versus multiple versions of the truth</span><span class="note">Leandro DalleMule and Thomas H. Davenport, "What's Your Data Strategy?", Harvard Business Review, May-June 2017; reported, body paywalled</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Harbourline and Adeline Tan</span><span class="note">Constructed. The POS vendor, the bank settlement timing, the bookkeeper's contract, the 38 Monday CSVs, the three stock copies, Kenneth and the vendor API are typical, not sourced; every value is printed in the bench's bank file</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">How a sale reaches the stock spreadsheet</span><span class="note">Not in her answers, so not claimed: drawn dashed and labelled unknown on every map on this page. Who types the stock sheet, and when, is likewise not asked yet</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Every fact on this page, and its verification tier, is recorded in the course's source map.</p>
+  </section>
+
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 2 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Four origins</b><span>Recorded by a system, typed by a person, not recorded, or exported by a person on a schedule. The fourth is the one a pipeline inherits.</span></div>
+      <div class="cheat-item"><b>Read frequency is a ceiling</b><span>A daily job still reads a monthly export. Contracts and logins set freshness before schedules do.</span></div>
+      <div class="cheat-item"><b>Five rungs, per system</b><span>Who fixes it · same way every time · written down · checked afterwards · better on its own. Names are DMBOK's; no rung 0.</span></div>
+      <div class="cheat-item"><b>Count the hand-offs</b><span>"Which systems does one sale touch?" Every hand-off is a place a number changes. An undescribed one is drawn dashed.</span></div>
+      <div class="cheat-item"><b>The key, by name, after trust</b><span>"Who can log in, and pull an export?" Asked cold you get "our IT guy"; asked later you get Kenneth and January.</span></div>
+      <div class="cheat-item"><b>Declare, then move</b><span>Treated is not declared. Put "declared real by" on every copy, then send the map: "which arrow is wrong?"</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>Session 3 puts every box on tonight's map on the bench and prices it. The two-day settlement gap, the refunds that live only in accounting, the three stock copies, the vendor API nobody has used, Kenneth's login: each is worth a number of points on Adeline's sheet, and the order you ask in decides which of them come out in 45 minutes. You also sort the whole question bank by kind, see what the five leading questions put in your notes, and run your own meeting against her.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Session 2 of 6 · learn-asking-right-questions-as-de-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="01-the-gap-from-the-engineers-chair.html">← Prev: The gap, from the engineer's chair</a> &nbsp;·&nbsp; <a href="03-the-engineers-questions-and-the-bench.html">Next: The engineer's questions, and the bench →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

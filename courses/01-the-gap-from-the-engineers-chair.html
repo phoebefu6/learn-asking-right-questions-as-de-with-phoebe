@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Session 1 of 6. Why an operations director and a data engineer can both say the numbers never match and mean two different things, why the data-state door is the engineer's widest but never the first one opened, and the teach-back line that makes every question teach her something.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="The gap, from the engineer's chair - learn asking the right questions as a data engineer with phoebe">
+<meta property="og:description" content="Session 1 of 6. Two tunes behind the word match, every system one sale touches, and the one sentence that turns a question into a lesson.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-asking-right-questions-as-de-with-phoebe/courses/01-the-gap-from-the-engineers-chair.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-asking-right-questions-as-de-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The gap, from the engineer's chair - learn asking the right questions as a data engineer with phoebe">
+<meta name="twitter:description" content="Session 1 of 6. Two tunes, the data-state door, the teach-back line.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-asking-right-questions-as-de-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Session 1 · The gap, from the engineer's chair - learn asking the right questions as a data engineer with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-asking-right-questions-as-de-with-phoebe</a> / Session 1 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Asking the Right Questions as a Data Engineer with Phoebe · Session 1 of 6</div>
+    <h1>The gap, from the <span class="accent">engineer's chair</span></h1>
+    <p class="sub">An operations director says "our numbers never match. Finance says one thing, the POS says another." A data engineer hears a join, a sync, a reconciliation job, and starts sketching one. A few weeks later there is a nightly pipeline that copies both numbers into one place, on time, every night, and they still disagree by the same amount, because the thing she was worried about was an auditor's letter asking which number was right, and the pipeline never decided. Nobody was careless. They used one word for two things. Tonight is how to notice: why the gap opens, why the data-state door is your widest but never your first, and the one sentence that lets her learn how data work thinks while she is answering you.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Core</span>
+      <span class="chip audience">Data engineers, and anyone asked to "connect the systems"</span>
+      <span class="chip audience">No code. A pen.</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · Two tunes, door 4, the teach-back</span>
+      <span class="a3" style="flex:5">18-40 · Build-along: the engineer's sheet</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we start</h2>
+    </div>
+    <p class="lede">An engineer's output is a pipeline other people trust without checking. That makes the first meeting more dangerous for you than for anyone else in the data team: a wrong assumption in an analyst's chart is visible on the page, but a wrong assumption in a pipeline runs every night, quietly, and gets copied into everything downstream. The running case for all six sessions is Harbourline, an invented chain of 38 pharmacy and clinic outlets across Singapore and Malaysia, and its operations director Adeline Tan, who has never seen a schema and does not need to. She has a request. You have 45 minutes with her. Everything in the six sessions is about what you ask in those minutes, so that what you build settles which copy is real instead of moving the disagreement faster.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+      <span class="pill">★ Build-along = write it yourself</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> A one-page Six Doors sheet for "our numbers never match", or for a request of your own: the data-state row written widest, the outcome question placed first, with the reason beside it, a plain teach-back line attached to every question, and the order you will walk them in. Session 3 puts that sheet in front of Adeline and counts what it gets out of her.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers why the gap opens</span>
+      <h2>Two tunes, and the word match</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">In a 1990 Stanford study reported by Chip and Dan Heath, Elizabeth Newton split people into tappers and listeners. Tappers tapped the rhythm of a well-known song on a table; listeners had to name it. Tappers predicted listeners would get about half. Listeners got 3 of 120. The tapper cannot stop hearing the tune, so the taps sound obvious; the listener hears knocking. When Adeline says "match" she is tapping a tune you cannot hear, and when you answer with a word like "reconcile" you are tapping one she cannot.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 336" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two panels joined by the single word match. On the left, the operations director and her tune: the auditor's letter asking which number is right, with finance and the POS about 2 percent apart every month. On the right, the data engineer and his tune: two tables, pos_sales and ledger, with an arrow between them meaning a join, a sync, a reconciliation job. Below, a wrong-way panel: what gets built if nobody notices, a nightly job that copies both numbers into one warehouse faster, with the 2 percent and the letter still there.">
+        <defs>
+          <filter id="s1aSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="13" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="s1aHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#9A3412" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="s1aAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2A1A12" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .s1aH { font: 800 12px Inter, sans-serif; fill: #2A1A12; }
+          .s1aL { font: 600 12px Inter, sans-serif; fill: #2A1A12; }
+          .s1aS { font: 400 11px Inter, sans-serif; fill: #6B5448; }
+          .s1aB { font: 800 11px Inter, sans-serif; fill: #084C4C; }
+          .s1aX { font: 800 11px Inter, sans-serif; fill: #991B1B; }
+          .s1aN { font: 400 12px Inter, sans-serif; fill: #6B5448; }
+        </style>
+
+        <text class="s1aH" x="30" y="26">ONE SENTENCE, TWO TUNES</text>
+        <text class="s1aS" x="210" y="26">"our numbers never match" means a different thing on each side of the table</text>
+
+        <g filter="url(#s1aSk)" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- two panels -->
+          <rect x="30" y="44" width="380" height="196" rx="8" transform="rotate(-0.4 220 142)" fill="#FFFFFF" stroke="#E2CFC3"/>
+          <rect x="470" y="44" width="380" height="196" rx="8" transform="rotate(0.4 660 142)" fill="#FFFFFF" stroke="#E2CFC3"/>
+          <!-- Adeline -->
+          <circle cx="80" cy="150" r="15"/>
+          <path d="M52 204 C58 176 102 176 108 204"/>
+          <!-- thought bubbles to her letter -->
+          <circle cx="104" cy="130" r="4" fill="#E4F3F3" stroke="#0E6B6B"/>
+          <circle cx="124" cy="118" r="6" fill="#E4F3F3" stroke="#0E6B6B"/>
+          <!-- her tune: the auditor's letter -->
+          <rect x="150" y="64" width="230" height="110" rx="4" transform="rotate(-0.8 265 119)" fill="#E4F3F3" stroke="#0E6B6B"/>
+          <path d="M356 64 L380 64 L380 88" stroke="#0E6B6B"/>
+          <!-- the word between them -->
+          <rect x="412" y="122" width="56" height="30" rx="6" transform="rotate(0.6 440 137)" fill="#FDF4EE"/>
+          <!-- his tune: two tables and an arrow -->
+          <rect x="490" y="64" width="110" height="70" rx="4" transform="rotate(-0.6 545 99)" fill="url(#s1aHc)"/>
+          <rect x="640" y="64" width="110" height="70" rx="4" transform="rotate(0.7 695 99)" fill="url(#s1aHc)"/>
+          <path d="M490 84 L600 84 M640 84 L750 84"/>
+          <path d="M604 99 L634 99" marker-end="url(#s1aAr)"/>
+          <!-- the engineer -->
+          <circle cx="800" cy="150" r="15"/>
+          <path d="M772 204 C778 176 822 176 828 204"/>
+          <!-- divider and wrong-way panel -->
+          <path d="M30 256 L850 256" stroke="#E2CFC3" stroke-dasharray="6 5"/>
+          <rect x="30" y="268" width="820" height="56" rx="8" transform="rotate(0.3 440 296)" fill="#FEF2F2" stroke="#FCA5A5"/>
+        </g>
+
+        <text class="s1aB" x="166" y="88">THE AUDITOR'S LETTER</text>
+        <text class="s1aL" x="166" y="108">Which number is right?</text>
+        <text class="s1aS" x="166" y="130">finance and the POS differ by</text>
+        <text class="s1aS" x="166" y="145">about 2 percent, every month,</text>
+        <text class="s1aS" x="166" y="160">and she could not tell him</text>
+        <text class="s1aS" x="166" y="196">her tune: an answer she owes by name</text>
+        <text class="s1aL" x="80" y="226" text-anchor="middle">Adeline</text>
+
+        <text class="s1aB" x="440" y="141" text-anchor="middle">"match"</text>
+
+        <text class="s1aL" x="545" y="78" text-anchor="middle">pos_sales</text>
+        <text class="s1aL" x="695" y="78" text-anchor="middle">ledger</text>
+        <text class="s1aS" x="490" y="156">a join, a sync,</text>
+        <text class="s1aS" x="490" y="171">a reconciliation job</text>
+        <text class="s1aS" x="490" y="196">his tune: two tables and an arrow</text>
+        <text class="s1aL" x="800" y="226" text-anchor="middle">the engineer</text>
+
+        <text class="s1aX" x="46" y="290">WHAT GETS BUILT IF NOBODY NOTICES</text>
+        <text class="s1aS" x="46" y="308">a nightly job that copies both numbers into one warehouse, faster; the 2 percent and the letter remain</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the teal letter is the request; the two tables are only the engineer's word for it</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The tune behind "match", and why neither side can hear the other's<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Newton's tappers were not bad at tapping. They could not <em>un-know</em> the song while they tapped, so every knock arrived with the melody attached, and they judged the listener's chances from inside that experience. Economists had named the effect a year earlier: Camerer, Loewenstein and Weber called it the curse of knowledge, the finding that better-informed people cannot fully set their information aside when predicting what less-informed people will understand.</p>
+        <p>"Match" carries two tunes. Adeline's is the letter on her desk: last month the auditor asked which revenue number was right, in writing, and she could not answer him. Her "match" means "one number I can defend, by a date, to a person". The engineer's tune is the machinery: two tables, a key to join them on, a job that runs nightly. His "match" means "the rows line up". Both are real. Only one of them is the request.</p>
+        <p>The gap is not closed by either side learning the other's vocabulary. It is closed by <strong>questions that make the tune audible</strong>: the last time two numbers did not match, which two, who noticed, and what happened next, asked in words that need no translation, with the reason for asking said out loud. That is the rest of tonight.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why the engineer's version of the gap is the expensive one<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>An analyst who misreads the request ships a chart nobody opens. It is visible, it is cheap to throw away, and the next meeting starts from the embarrassment. An engineer who misreads it ships a pipeline, and a pipeline does not look wrong. It runs green every night. It loads two numbers that disagree into one table, where they now disagree faster, in more places, with a timestamp that makes both look official. The disagreement has not been settled; it has been automated.</p>
+        <p>That is the failure every page in these six sessions is written against: <strong>a pipeline that moves the disagreement faster instead of settling which copy is real.</strong> The engineering is rarely the hard part. Deciding which copy is real is a business decision, it needs facts only Adeline and her team hold, and the first meeting is the only cheap place to get them.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The integration that stalled.</strong> Harbourline is a constructed case, but this shape is common enough to be a pattern. Two years ago a vendor ran an "integration" project to connect Harbourline's systems. It stalled the week Kenneth, the only IT person, went on leave, and it never restarted. Whatever else went wrong, the stall says the whole project hung on one person, and a person is the one single point of failure nobody draws on a system diagram. Adeline only mentions it once she trusts you, and only if you ask whether they have tried this before. It is the single most useful fact for predicting where your project will stall, because it is usually the same place.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers the widest door</span>
+      <h2>The data-state door, opened widest, but not first</h2>
+      <span class="tag concept">6 min live</span>
+    </div>
+    <p class="lede">Every discovery meeting is a corridor of six doors: Outcome · Decision · Current way · Data state · Constraints · Success and partnership. The corridor, and the question that opens each door, is drawn once in <a href="https://phoebefu6.github.io/learn-asking-right-questions-as-da-with-phoebe/courses/01-why-the-gap-and-the-six-doors.html">the analyst's session 1</a>; walk it there if you have not. Tonight spends its minutes on door 4, data state, because it is where an engineer's work is decided: every system a number passes through, who can log in to each, how often each is read, and which copy is declared real. It is your widest door. It is not your first.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 316" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One Harbourline sale drawn travelling through four systems: the till, a cloud POS; bank settlement, where card sales land two days late and cash is deposited weekly; the ledger, kept by an outsourced bookkeeper in Kuala Lumpur, the only place refunds exist; and the stock sheet, which exists in three copies. Five hand-offs are numbered. Hand-off 1, till to bank, is marked in teal as the timing gap. Hand-off 3 is the monthly export that becomes finance's number; hand-off 4 is the Monday CSV that becomes the POS number; hand-off 5, till to stock sheet, is dashed because nobody has said how it happens. The two numbers differ by about 2 percent every month, mostly timing.">
+        <defs>
+          <filter id="s1bSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="29" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="s1bHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#9A3412" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="s1bAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2A1A12" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .s1bH { font: 800 12px Inter, sans-serif; fill: #2A1A12; }
+          .s1bL { font: 600 12px Inter, sans-serif; fill: #2A1A12; }
+          .s1bS { font: 400 11px Inter, sans-serif; fill: #6B5448; }
+          .s1bB { font: 800 11px Inter, sans-serif; fill: #084C4C; }
+          .s1bV { font: 800 16px Inter, sans-serif; fill: #7C2D12; }
+          .s1bW { font: 800 11px Inter, sans-serif; fill: #FFFFFF; }
+          .s1bN { font: 400 12px Inter, sans-serif; fill: #6B5448; }
+        </style>
+
+        <text class="s1bH" x="30" y="26">ONE SALE, FOUR SYSTEMS, EVERY HAND-OFF NUMBERED</text>
+        <text class="s1bS" x="400" y="26">each numbered arrow is a place the number can change</text>
+        <text class="s1bB" x="219" y="52" text-anchor="middle">the timing gap</text>
+
+        <g filter="url(#s1bSk)" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- row 1: till, bank, ledger, finance's number -->
+          <rect x="30" y="60" width="160" height="84" rx="6" transform="rotate(-0.5 110 102)" fill="#FFFFFF"/>
+          <rect x="250" y="60" width="160" height="84" rx="6" transform="rotate(0.4 330 102)" fill="#FFFFFF"/>
+          <rect x="470" y="60" width="160" height="84" rx="6" transform="rotate(-0.3 550 102)" fill="#FFFFFF"/>
+          <rect x="690" y="60" width="160" height="84" rx="6" transform="rotate(0.5 770 102)" fill="#FDF4EE"/>
+          <!-- the till doodle -->
+          <rect x="158" y="68" width="24" height="14" rx="2"/>
+          <path d="M162 82 L162 90 L178 90 L178 82 M166 68 L166 62 L174 62 L174 68"/>
+          <!-- hand-offs 1 to 3 -->
+          <path d="M194 102 L244 102" stroke="#0E6B6B" stroke-width="3" marker-end="url(#s1bAr)"/>
+          <path d="M414 102 L464 102" marker-end="url(#s1bAr)"/>
+          <path d="M634 102 L684 102" marker-end="url(#s1bAr)"/>
+          <circle cx="219" cy="82" r="10" fill="#0E6B6B" stroke="#0E6B6B"/>
+          <circle cx="439" cy="82" r="10" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="659" cy="82" r="10" fill="#9A3412" stroke="#9A3412"/>
+          <!-- hand-off 4: the Monday CSV -->
+          <path d="M110 148 L110 198" marker-end="url(#s1bAr)"/>
+          <circle cx="90" cy="172" r="10" fill="#9A3412" stroke="#9A3412"/>
+          <!-- hand-off 5: till to stock sheet, route unknown -->
+          <path d="M150 148 C170 184 262 168 318 198" stroke-dasharray="5 5" marker-end="url(#s1bAr)"/>
+          <circle cx="232" cy="176" r="10" fill="#9A3412" stroke="#9A3412"/>
+          <!-- row 2: POS number, stock sheet, the gap -->
+          <rect x="30" y="204" width="160" height="70" rx="6" transform="rotate(0.4 110 239)" fill="#FDF4EE"/>
+          <rect x="250" y="204" width="160" height="70" rx="6" transform="rotate(-0.5 330 239)" fill="url(#s1bHc)"/>
+          <rect x="470" y="204" width="380" height="76" rx="8" transform="rotate(0.3 660 242)" fill="#FFFFFF" stroke="#E2CFC3"/>
+        </g>
+
+        <text class="s1bW" x="219" y="86" text-anchor="middle">1</text>
+        <text class="s1bW" x="439" y="86" text-anchor="middle">2</text>
+        <text class="s1bW" x="659" y="86" text-anchor="middle">3</text>
+        <text class="s1bW" x="90" y="176" text-anchor="middle">4</text>
+        <text class="s1bW" x="232" y="180" text-anchor="middle">5</text>
+
+        <text class="s1bL" x="42" y="80">the till (POS)</text>
+        <text class="s1bS" x="42" y="98">one cloud vendor,</text>
+        <text class="s1bS" x="42" y="113">CSV per outlet;</text>
+        <text class="s1bS" x="42" y="128">API never used</text>
+
+        <text class="s1bL" x="262" y="80">bank settlement</text>
+        <text class="s1bS" x="262" y="98">cards: 2 days late</text>
+        <text class="s1bS" x="262" y="113">cash: weekly deposit</text>
+
+        <text class="s1bL" x="482" y="80">the ledger</text>
+        <text class="s1bS" x="482" y="98">outsourced bookkeeper</text>
+        <text class="s1bS" x="482" y="113">in Kuala Lumpur;</text>
+        <text class="s1bS" x="482" y="128">refunds only here</text>
+
+        <text class="s1bL" x="702" y="80">finance's number</text>
+        <text class="s1bS" x="702" y="98">one export a month,</text>
+        <text class="s1bS" x="702" y="113">booked by the 5th</text>
+        <text class="s1bS" x="702" y="128">working day</text>
+
+        <text class="s1bL" x="42" y="226">the POS number</text>
+        <text class="s1bS" x="42" y="244">38 CSVs on Monday,</text>
+        <text class="s1bS" x="42" y="259">a 2019 macro merges</text>
+
+        <text class="s1bL" x="262" y="226">stock sheet</text>
+        <text class="s1bS" x="262" y="244">three copies in use;</text>
+        <text class="s1bS" x="262" y="259">Priya's laptop copy</text>
+        <text class="s1bS" x="336" y="180">route unknown: ask</text>
+
+        <text class="s1bV" x="490" y="232">about 2 percent</text>
+        <text class="s1bS" x="490" y="252">between the two numbers, every month; mostly timing</text>
+        <text class="s1bS" x="490" y="267">hand-off 1 is where most of it lives</text>
+
+        <text class="s1bN" x="30" y="302">At hand-off 1 a card sale waits two days and cash waits a week. Both numbers are true of different days.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - count the arrows, not the boxes; the teal one is where the two numbers part company</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Open questions first, because door 4 holds the sensitive facts<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The instinct is to open with the systems, because the systems are what you will touch. Resist it for three questions. Door 4 is where the facts people guard live: who holds the only login, which copy of a file is actually used, who fixes numbers by hand without telling anyone. Adeline does not hand those to a stranger who opened with "what is your stack". She hands them to someone who has shown they understand what she is worried about.</p>
+        <p>So the first question is an outcome question in the past tense: <strong>"Tell me about the last time two numbers did not match. Which two, how far apart, and who noticed?"</strong> Its teach-back: "A mismatch is two systems answering two different questions. I need the exact pair before I can say which one is right." In four or five minutes you learn which mismatch matters (month-end revenue, about two percent, and an auditor who has now asked in writing), you earn a notch of trust, and every data-state question after it lands on a warmer table.</p>
+        <p>On Adeline's sheet the most sensitive data-state fact, that Kenneth is the only IT person, holds the only POS admin login, and is leaving in January, needs the highest trust of anything she knows. She has not told her own team. Asked cold, "who can log in?" gets you a name. Asked after trust, it gets you the risk.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Then every system one sale touches, and which copy is real<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Once she trusts you, open door 4 wide and walk one sale through it: <strong>"Which systems does one sale touch, from the till to the bank to the ledger?"</strong> At Harbourline the answer is a cloud POS with a CSV export per outlet and an API nobody has used; a bank that settles cards two days late and receives cash weekly; a ledger in a cloud accounting package run by an outsourced bookkeeper in Kuala Lumpur, who exports once a month; and, off to the side, a stock spreadsheet. Then ask how often each is read today and by whom, because that frequency is a ceiling you inherit until a contract or a login changes it.</p>
+        <p>Leandro DalleMule and Thomas Davenport's 2017 frame for data strategy, as reported, sets a single source of truth against multiple versions of the truth, each fit for a purpose. Both are legitimate designs. What is never a design is having several versions by accident with nobody saying which one wins, and that is Harbourline: finance's number and the POS number are both honest, built along two paths, and nobody has declared which one the auditor gets. The engineer's job at door 4 is not to pick. It is to find out who can decide, and to get it decided before anything moves.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Where the business sits, and why the first build is small<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Joe Reis and Matt Housley, in <em>Fundamentals of Data Engineering</em> (O'Reilly, 2022), describe organisations as starting with data, scaling with data, or leading with data, and argue the engineering should fit the stage; the framing here is as reported, not read chapter by chapter. Harbourline is plainly starting: 38 CSV files pasted on Monday, a 2019 macro, one IT person, no budget this quarter. A starting business does not need a platform first. It needs one declared real copy of one number, reproduced exactly, with a second person who knows how it is made.</p>
+        <p>That is also why data state is asked in plain words. Session 2 turns door 4 into a ladder of questions that a person who has never seen a schema can answer, and draws the system map from her replies.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>Three copies of one spreadsheet.</strong> In the same constructed case, three versions of the stock spreadsheet are in circulation, and the one Priya treats as real lives on her laptop. A leading question ("stock lives in the POS, right?") gets a polite "sure" and puts a false belief in your notes. An open one ("where do the stock numbers live, and which copy is the real one?") gets the laptop, and a teach-back worth saying out loud: "A file that exists three times has no real copy until someone declares one. I need that declared before I move it anywhere."</p>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>The order is worth measuring.</strong> On session 3's bench, the same questions in any order at all average 27.6 points (the shuffles range from 5 to 45); walked door by door they score 47; tuned for an engineer, three trust-earning questions and then data state widest, they score 51. The ordering is the finding. The numbers belong to a constructed company, not a real one.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers the teach-back line</span>
+      <h2>The teach-back line for an engineer</h2>
+      <span class="tag concept">4 min live</span>
+    </div>
+    <p class="lede">Every open question in the bank carries a second sentence: a plain statement of why you are asking. Said out loud before the question, it does three things at once. It turns the question into a reason rather than an interrogation, it earns trust, and it teaches Adeline one true thing about how data work is decided. An engineer's teach-back lines are mostly about hand-offs, logins and timing, which are exactly the things she has never had explained and most needs to understand before she can decide which copy is real.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A two-part speech bubble from the engineer. The question: where does finance's revenue number come from, step by step. The teach-back: two numbers built along two paths usually disagree about timing long before they disagree about truth. Three arrows leave it: to a fact that comes back from the operations director, card settlements land two days late and cash is deposited weekly; to a lesson that stays with her, a mismatch is usually timing, not truth, drawn in teal; and to a trust meter that rises one notch.">
+        <defs>
+          <filter id="s1cSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="37" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="s1cHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#9A3412" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="s1cAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2A1A12" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .s1cH { font: 800 12px Inter, sans-serif; fill: #2A1A12; }
+          .s1cL { font: 600 11.5px Inter, sans-serif; fill: #2A1A12; }
+          .s1cS { font: 400 11px Inter, sans-serif; fill: #6B5448; }
+          .s1cB { font: 800 11px Inter, sans-serif; fill: #084C4C; }
+          .s1cA { font: 700 11px Inter, sans-serif; fill: #9A3412; }
+          .s1cN { font: 400 12px Inter, sans-serif; fill: #6B5448; }
+        </style>
+
+        <text class="s1cH" x="30" y="26">ONE QUESTION, TWO SENTENCES, THREE THINGS BACK</text>
+
+        <g filter="url(#s1cSk)" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- the engineer's bubble, two-part -->
+          <path d="M40 60 L400 60 L400 186 L120 186 L96 208 L100 186 L40 186 Z" fill="#FFFFFF"/>
+          <path d="M52 126 L388 126" stroke="#E2CFC3" stroke-dasharray="5 4"/>
+          <!-- the engineer -->
+          <circle cx="70" cy="232" r="12"/>
+          <path d="M48 270 C54 250 86 250 92 270"/>
+          <!-- arrows out -->
+          <path d="M406 90 C460 90 470 82 520 82" marker-end="url(#s1cAr)"/>
+          <path d="M406 160 C460 160 470 180 520 180" marker-end="url(#s1cAr)"/>
+          <path d="M406 204 C460 204 480 240 520 240" marker-end="url(#s1cAr)"/>
+          <!-- the fact that comes back -->
+          <rect x="530" y="52" width="320" height="60" rx="8" transform="rotate(-0.4 690 82)" fill="#FDF4EE"/>
+          <!-- the lesson that stays -->
+          <rect x="530" y="152" width="320" height="54" rx="8" transform="rotate(0.5 690 179)" fill="#E4F3F3" stroke="#0E6B6B"/>
+          <!-- trust meter -->
+          <rect x="530" y="232" width="200" height="16" rx="8" fill="#FFFFFF" stroke="#E2CFC3"/>
+          <rect x="530" y="232" width="60" height="16" rx="8" fill="url(#s1cHc)"/>
+          <rect x="590" y="232" width="40" height="16" rx="8" fill="#9A3412" stroke="#9A3412"/>
+        </g>
+
+        <text class="s1cA" x="52" y="80">THE QUESTION</text>
+        <text class="s1cL" x="52" y="98">"Where does finance's revenue number come from,</text>
+        <text class="s1cL" x="52" y="113">step by step?"</text>
+        <text class="s1cB" x="52" y="146">THE TEACH-BACK</text>
+        <text class="s1cS" x="52" y="162">"Two numbers built along two paths usually disagree</text>
+        <text class="s1cS" x="52" y="177">about timing long before they disagree about truth."</text>
+        <text class="s1cS" x="104" y="252">the engineer</text>
+
+        <text class="s1cL" x="544" y="72">A fact comes back</text>
+        <text class="s1cS" x="544" y="90">"Card settlements land two days late and cash</text>
+        <text class="s1cS" x="544" y="104">is deposited weekly."</text>
+        <text class="s1cB" x="544" y="174">A lesson stays with her</text>
+        <text class="s1cS" x="544" y="192">a mismatch is usually timing, not truth</text>
+        <text class="s1cS" x="740" y="244">trust, one notch up</text>
+
+        <text class="s1cN" x="30" y="290">She only explains settlement timing once she trusts you. The second sentence is how the trust gets there.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the teal box is the part of the meeting that outlives it</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Three lines an engineer says in almost every meeting<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A teach-back line is <strong>plain</strong>: no word she would have to ask about, so "the file" not "the extract", "log in" not "credentials", "two days late" not "latency". It is <strong>true</strong>: a real principle of the craft, not a pleasantry. And it is <strong>one sentence</strong>, because two is a lecture and she stops answering. These three carry most of door 4.</p>
+        <p>Before "Which systems does one sale touch, from the till to the bank to the ledger?": "Every hand-off between systems is a place a number can change. I am counting the hand-offs."</p>
+        <p>Before "Who can log in to each of those, and pull an export?": "Access is the first blocker on most data projects, so I ask early and I ask by name."</p>
+        <p>Before "Where does finance's revenue number come from, step by step?": "Two numbers built along two paths usually disagree about timing long before they disagree about truth." Said to Adeline, that last one changes the meeting. She came in believing one side was wrong. She leaves knowing that both may be right about different days, which is the first step to deciding which day the auditor gets. Session 4 builds the rest of the set and chooses the one concept per meeting worth explaining properly.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Jargon and leading questions, the engineer's two habits<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Session 3 sorts every question into five kinds: open, closed, vague, jargon and leading. Engineers are most exposed to two. <strong>Jargon</strong> is the question you would ask a colleague: "Do you have change data capture on the POS, or should we batch?" It costs minutes while she works out what you mean, and it costs trust, because she is now a little less sure you understand a pharmacy. <strong>Leading</strong> questions are the dangerous kind because they feel efficient: "The POS is the source of truth, right?" gets a "sure", and a belief that is wrong goes into your notes. On this bank the POS is not the source of truth; the two percent is settlement timing.</p>
+        <p>The fast yes-or-no interview on the bench records five false beliefs of exactly this shape, and each one is a thing you would build on: pull everything daily, the vendor API is in use, finance is simply wrong, stock lives in the POS. Six weeks later each is a pipeline that is correct about a world that does not exist.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The two percent that was not an error.</strong> Still the constructed case. Adeline has spent months treating the gap between finance and the POS as somebody's mistake. It is mostly timing: card settlements reach the bank two days after the sale, cash is deposited weekly, and refunds are processed in the accounting system, which the POS never sees. A reconciliation job built on "finance is wrong" would have flagged the same honest difference every month, forever. A single question about where finance's number comes from, asked with its reason, turns a blame problem into a definition problem, and definitions can be decided.</p>
+    </div>
+
+    <div class="tryrow" data-fn="wordcount" data-multiline="1" data-title="Write one teach-back line" data-hint="Pick a question you asked a business person this month about a system, a login or a file. Write the sentence you should have said before it: why you were asking, in words they already know. One sentence." data-seed="" data-cta="Count it"></div>
+  </section>
+
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>The engineer's sheet for "our numbers never match"</h2>
+      <span class="tag demo">★ 22 min · everyone writes</span>
+    </div>
+    <p class="lede">One page, six rows, one of them wider than the rest. Use Adeline's request, or a "connect the systems" request from your own inbox, and build the sheet you will carry into the meeting. Every line is written before the meeting; the meeting is for listening.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 366" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn one-page sheet. At the top, the request in the operations director's words: our numbers never match, finance says one thing, the POS says another. Below, six rows, one per door, each with a question and a teach-back line. The data-state row is drawn in teal and is three times the height of the others, holding four questions. In the margin, a note on the outcome row says the outcome question goes first, and a note on the data-state row says it is the widest door, asked once trust is earned. A pen lies beside the page.">
+        <defs>
+          <filter id="s1dSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="43" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="s1dHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#9A3412" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="s1dAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2A1A12" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .s1dH { font: 800 12px Inter, sans-serif; fill: #2A1A12; }
+          .s1dL { font: 700 11px Inter, sans-serif; fill: #2A1A12; }
+          .s1dS { font: 400 11px Inter, sans-serif; fill: #6B5448; }
+          .s1dB { font: 800 11px Inter, sans-serif; fill: #084C4C; }
+          .s1dA { font: 700 11px Inter, sans-serif; fill: #9A3412; letter-spacing: .05em; }
+          .s1dN { font: 400 12px Inter, sans-serif; fill: #6B5448; }
+        </style>
+
+        <text class="s1dH" x="30" y="26">THE SHEET, ONE PAGE, WRITTEN BEFORE THE MEETING</text>
+
+        <g filter="url(#s1dSk)" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- the page -->
+          <rect x="60" y="44" width="620" height="290" rx="4" transform="rotate(-0.3 370 189)" fill="#FFFFFF"/>
+          <!-- request box -->
+          <rect x="76" y="56" width="588" height="28" rx="4" fill="url(#s1dHc)"/>
+          <!-- the widest row -->
+          <rect x="76" y="194" width="588" height="78" rx="4" fill="#E4F3F3" stroke="#0E6B6B"/>
+          <!-- row rules -->
+          <path d="M76 116 L664 116 M76 142 L664 142 M76 168 L664 168 M76 298 L664 298 M76 324 L664 324" stroke="#E2CFC3"/>
+          <!-- column rules -->
+          <path d="M190 94 L190 324 M430 94 L430 324" stroke="#E2CFC3" stroke-dasharray="4 4"/>
+          <!-- margin arrows -->
+          <path d="M700 132 L674 130" marker-end="url(#s1dAr)"/>
+          <path d="M700 230 L674 232" marker-end="url(#s1dAr)"/>
+          <!-- the pen -->
+          <path d="M770 322 L846 292 L850 300 L774 330 Z"/>
+          <path d="M770 322 L760 334 L774 330"/>
+        </g>
+
+        <text class="s1dS" x="86" y="75">in her words: "Our numbers never match. Finance says one thing, the POS says another."</text>
+        <text class="s1dA" x="84" y="108">DOOR</text>
+        <text class="s1dA" x="200" y="108">OPEN QUESTIONS, PAST TENSE</text>
+        <text class="s1dA" x="440" y="108">TEACH-BACK, ONE LINE EACH</text>
+
+        <text class="s1dL" x="84" y="134">1 Outcome</text>
+        <text class="s1dS" x="200" y="134">last time two numbers differed?</text>
+        <text class="s1dS" x="440" y="134">a mismatch is two questions</text>
+        <text class="s1dL" x="84" y="160">2 Decision</text>
+        <text class="s1dS" x="200" y="160">month-end: who decides, by when?</text>
+        <text class="s1dS" x="440" y="160">whose definition wins, and when</text>
+        <text class="s1dL" x="84" y="186">3 Current way</text>
+        <text class="s1dS" x="200" y="186">where does finance's number start?</text>
+        <text class="s1dS" x="440" y="186">two paths: timing before truth</text>
+
+        <text class="s1dB" x="84" y="212">4 Data state</text>
+        <text class="s1dB" x="84" y="227">widest</text>
+        <text class="s1dS" x="200" y="212">which systems does one sale touch?</text>
+        <text class="s1dS" x="200" y="227">who can log in and pull an export?</text>
+        <text class="s1dS" x="200" y="242">which copy is real? how often read?</text>
+        <text class="s1dS" x="200" y="257">same product codes in SG and MY?</text>
+        <text class="s1dS" x="440" y="212">I am counting the hand-offs</text>
+        <text class="s1dS" x="440" y="227">access first, and by name</text>
+        <text class="s1dS" x="440" y="242">three copies means no real copy</text>
+        <text class="s1dS" x="440" y="257">two names break a total</text>
+
+        <text class="s1dL" x="84" y="290">5 Constraints</text>
+        <text class="s1dS" x="200" y="290">what is off the table?</text>
+        <text class="s1dS" x="440" y="290">limits first, so I propose a yes</text>
+        <text class="s1dL" x="84" y="316">6 Success</text>
+        <text class="s1dS" x="200" y="316">tried this before? what happened?</text>
+        <text class="s1dS" x="440" y="316">the last attempt shows the stall</text>
+
+        <text class="s1dB" x="708" y="128">first: the outcome</text>
+        <text class="s1dB" x="708" y="143">question, to start</text>
+        <text class="s1dB" x="708" y="226">widest: door 4,</text>
+        <text class="s1dB" x="708" y="241">asked once trust</text>
+        <text class="s1dB" x="708" y="256">is earned</text>
+
+        <text class="s1dN" x="30" y="356">Three open questions buy the trust the most guarded answers behind door 4 need.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the teal row is three rows tall because it is where an engineer's build is decided</figcaption>
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <p><strong>Write the request as it was received, in her words.</strong> Not your translation. If it arrived as "our numbers never match", do not write "reconcile POS and ledger". You will want her sentence back at the end of the meeting, to see how far the real request was from it.</p>
+        <div class="prompt-box good"><span class="label">★ Step 1 · the request</span>Request, verbatim: "Our numbers never match. Finance says one thing, the POS says another, and last month the auditor asked which one was right. I could not tell him."
+From: Adeline Tan, operations director
+Received: in the first two minutes of the meeting</div>
+      </div>
+      <div class="step">
+        <p><strong>Place the outcome question first, and write the reason beside it.</strong> The reason is for you, not for her: it stops you skipping the question when the systems start to look interesting.</p>
+        <div class="prompt-box good"><span class="label">★ Step 2 · the first question and why it is first</span>Q: Tell me about the last time two numbers did not match. Which two, how far apart, and who noticed?
+Teach-back: A mismatch is two systems answering two different questions. I need the exact pair before I can say which one is right.
+Why first: it tells me which mismatch matters, it costs her nothing sensitive, and it earns the trust that "who can log in" needs later.</div>
+      </div>
+      <div class="step">
+        <p><strong>Write the data-state row widest: four or five questions, each with its teach-back.</strong> Every system one sale touches, who can log in, how often each is read, and which copy is real. Write them so a person who has never seen a database can answer every one.</p>
+        <div class="prompt-box good"><span class="label">★ Step 3 · door 4, opened widest</span>Which systems does one sale touch, from the till to the bank to the ledger?
+  Why: Every hand-off between systems is a place a number can change. I am counting the hand-offs.
+Who can log in to each of those, and pull an export?
+  Why: Access is the first blocker on most data projects, so I ask early and I ask by name.
+Where do the stock numbers live, and which copy is the real one?
+  Why: A file that exists three times has no real copy until someone declares one.
+How often does each system get exported today, and by whom?
+  Why: How often a system is read today is a ceiling I inherit until a contract or a login changes it.</div>
+        <div class="prompt-box bad"><span class="label">The same door, as it is usually opened</span>Do you have change data capture on the POS, or should we batch?
+What is the SLA on the ledger sync?
+The POS is the source of truth, right?</div>
+      </div>
+      <div class="step">
+        <p><strong>Write the order you will walk tonight.</strong> One outcome question, a question each at decision and current way so you know whose number wins and how it is made today, then door 4 widest, then the rest. Session 3 runs exactly this order against Adeline and counts it.</p>
+        <div class="prompt-box good"><span class="label">★ Step 4 · the order for tonight</span>1 Outcome (one question)  -&gt;  2 Decision (one)  -&gt;  3 Current way (one)  -&gt;  4 Data state (four or five, widest)  -&gt;  3 again: where finance's number comes from  -&gt;  6 Success  -&gt;  5 Constraints
+Budget: 45 minutes. The first eight questions take about half an hour. Everything after that is spares.</div>
+      </div>
+      <div class="step">
+        <p><strong>Rehearse the first thirty seconds against her opener.</strong> Say your first question out loud with its teach-back. If it took more than twenty seconds, it is two questions; split it.</p>
+        <div class="prompt-box good"><span class="label">★ Step 5 · the first thirty seconds</span>Adeline: "Thanks for coming. Our numbers never match. Finance says one thing, the POS says another, and last month the auditor asked which one was right. I could not tell him."
+You: "Before the systems, can I ask about that month? Tell me about the last time two numbers did not match: which two, how far apart, and who noticed? A mismatch is two systems answering two different questions, and I need the exact pair before I can say which one is right."</div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>Keep the sheet after the meeting.</strong> Session 2 turns the door 4 answers into a map of every system a number passes through, session 5 turns her answers into three candidate projects, and session 6 turns the filled-in sheet into the one-page brief you send within 24 hours. The same page carries all of it.</p>
+    </div>
+  </section>
+
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before session 2</h2>
+      <span class="tag exercise">30 min</span>
+    </div>
+    <ol>
+      <li><strong>Finish the sheet</strong> for your request: the outcome question first with its reason, the data-state row widest, a teach-back line on every question, and the order. Bring it printed; session 3 puts it on the bench.</li>
+      <li><strong>Find the tune.</strong> For a "numbers never match" request of your own, write what you think "match" means to the person who said it: whose question does the mismatch stop them answering, and by when? Then write what it meant to you when you first heard it.</li>
+      <li><strong>Count the hand-offs</strong> in one number you already move. Follow one record from where a person or a till creates it to where someone reads it, and number every hand-off. Mark the one where timing differs most.</li>
+      <li><strong>Find the declared copy.</strong> For one file or table you load today, find out who, by name, declared it the real one. If nobody did, write that down; session 2 starts there.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and session 1 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · Adeline says "our numbers never match". Why is "match" two questions, not one?</p>
+      <button class="qopt" type="button">A · Because finance and the POS use different software</button>
+      <button class="qopt" type="button">B · Because each side hears its own tune: to her it means one number she can defend to the auditor by a date, to the engineer it means rows that line up across two tables; a pipeline built to the second can run perfectly and never answer the first</button>
+      <button class="qopt" type="button">C · Because she does not understand what a join is</button>
+      <button class="qopt" type="button">D · Because match is a technical term that should be avoided</button>
+      <p class="qwhy">The curse of knowledge runs both ways. Neither reading is wrong, and neither side notices the other one. A nightly job that loads both numbers into one warehouse satisfies the engineer's "match" and leaves the auditor's letter unanswered.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="3">
+      <p class="qtext">2 · Data state is the engineer's widest door. Why do open questions from other doors go before it?</p>
+      <button class="qopt" type="button">A · Because the framework must be walked in its printed order every time</button>
+      <button class="qopt" type="button">B · Because data questions are too technical for an operations director</button>
+      <button class="qopt" type="button">C · Because the outcome door holds more facts than door 4</button>
+      <button class="qopt" type="button">D · Because door 4 holds the guarded facts, such as who holds the only login and is leaving, and she gives those to someone who has shown they understand her worry; an outcome question tells you which mismatch matters, and open questions at the first doors earn that trust first</button>
+      <p class="qwhy">On Adeline's sheet, the fact that Kenneth holds the only POS admin login and leaves in January needs the most trust of anything she knows. Asked cold, "who can log in?" gets a name. Asked after trust, it gets the risk.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · Why does the engineer count hand-offs rather than systems?</p>
+      <button class="qopt" type="button">A · Because a hand-off is where a number can change: at Harbourline a card sale waits two days between till and bank, cash waits a week, and refunds exist only in the ledger, so two honest numbers part company at the hand-offs, not inside any one system</button>
+      <button class="qopt" type="button">B · Because systems are too many to list in one meeting</button>
+      <button class="qopt" type="button">C · Because each hand-off is a separate project to bill</button>
+      <button class="qopt" type="button">D · Because hand-offs are where data is stored</button>
+      <p class="qwhy">The two percent between finance and the POS is mostly timing. Each system is right about its own day; the disagreement lives in the arrows between them, and that is why the teach-back line is "I am counting the hand-offs".</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Tappers and listeners, about 50 percent predicted, 3 of 120 named</span><span class="note">Elizabeth Newton, "The Rocky Road from Actions to Intentions", PhD dissertation, Stanford, 1990; figures as reported in Chip Heath and Dan Heath, Made to Stick, Random House, 2007, ch. 1. The dissertation itself was not read at source</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">The curse of knowledge, the term</span><span class="note">Camerer, Loewenstein and Weber, "The Curse of Knowledge in Economic Settings", Journal of Political Economy 97(5), 1989</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">The Six Doors corridor</span><span class="note">Stated in full once, in <a href="https://phoebefu6.github.io/learn-asking-right-questions-as-da-with-phoebe/courses/01-why-the-gap-and-the-six-doors.html">the analyst's session 1</a>; this page names the six and opens door 4 widest</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Single source of truth versus multiple versions of the truth</span><span class="note">Leandro DalleMule and Thomas H. Davenport, "What's Your Data Strategy?", Harvard Business Review, May-June 2017; reported, the article is paywalled and was not read in full</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Starting, scaling and leading with data</span><span class="note">Joe Reis and Matt Housley, Fundamentals of Data Engineering, O'Reilly, 2022; reported, and no chapter is cited because none was confirmed</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Any order 27.6 (5 to 45), door by door 47, tuned for an engineer 51</span><span class="note">Measured on session 3's bench against a constructed fact sheet; the ordering is the finding, never the numbers as facts about a real business</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Harbourline and Adeline Tan</span><span class="note">Constructed. Every fact on her sheet, from the two percent to Kenneth's login, is printed in the bench's bank file and is invented to be typical, not sourced</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Every fact on this page, and its verification tier, is recorded in the course's source map.</p>
+  </section>
+
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 1 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Two tunes behind "match"</b><span>Hers: one number she can defend, by a date, to a person. Yours: rows that line up. Only hers is the request.</span></div>
+      <div class="cheat-item"><b>The failure to avoid</b><span>A pipeline that moves the disagreement faster instead of settling which copy is real.</span></div>
+      <div class="cheat-item"><b>Open questions first</b><span>"Tell me about the last time two numbers did not match." It earns the trust door 4 needs.</span></div>
+      <div class="cheat-item"><b>Door 4, widest</b><span>Every system a sale touches, who can log in, how often each is read, which copy is real.</span></div>
+      <div class="cheat-item"><b>Count the hand-offs</b><span>A number changes between systems, not inside them. A mismatch is usually timing, not truth.</span></div>
+      <div class="cheat-item"><b>The teach-back line</b><span>Plain, true, one sentence, before the question. Trust up, and she learns one real thing.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>Door 4 is the one you know how to open and the one she cannot answer in your words. Session 2 is a ladder of plain questions that gets the real state of Harbourline's data out of a person who has never seen a schema: which numbers are typed by a person and which come out of a till, who owns the product codes, which copy of the stock sheet is real, who holds the only login. You draw every system a number passes through from her answers, and that map is the first thing you send her.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Session 1 of 6 · learn-asking-right-questions-as-de-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="../index.html">← Course home</a> &nbsp;·&nbsp; <a href="02-every-system-a-number-passes-through.html">Next: Every system a number passes through →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

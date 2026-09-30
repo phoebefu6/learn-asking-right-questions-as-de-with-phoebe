@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Session 6 of 6. The capstone for a data engineer: a full 45-minute discovery meeting run on the bench with your own sheet and read against the five presets, then the one-page brief the operations director reads the next morning, with a block 4 that declares one revenue number real before anything is automated, and the strict ship gate that decides whether it goes out.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="The mock meeting and the one-page brief - learn asking the right questions as a data engineer with phoebe">
+<meta property="og:description" content="Session 6 of 6. Your meeting, scored. Then one page she can read, with no new pipeline yet, sent within 24 hours.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-asking-right-questions-as-de-with-phoebe/courses/06-the-mock-meeting-and-the-brief.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-asking-right-questions-as-de-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The mock meeting and the one-page brief - learn asking the right questions as a data engineer with phoebe">
+<meta name="twitter:description" content="Session 6 of 6. The full run, the brief, the ship gate.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-asking-right-questions-as-de-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Session 6 · The mock meeting and the one-page brief - learn asking the right questions as a data engineer with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-asking-right-questions-as-de-with-phoebe</a> / Session 6 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn Asking the Right Questions as a Data Engineer with Phoebe · Session 6 of 6</div>
+    <h1>The mock meeting and the <span class="accent">one-page brief</span></h1>
+    <p class="sub">Five sessions built the parts: the engineer's tune and the widest door, every system a number passes through, the kinds of question and what each costs, the second sentence that teaches, and three candidates that each start by declaring one copy real. Tonight they run end to end. You take your own sheet into a full 45-minute meeting with Adeline on the bench, read your score against the five presets, and then do the thing that decides whether the meeting was worth having: write the one page she reads the next morning. What you heard, in her words. Every system her revenue number passes through, and which copy is real. What you will do first, and the pipeline you will not build yet. How you will both know. Who does what next week. It goes out within 24 hours, or the meeting fades into "the engineer came by once". The corridor of six is in <a href="https://phoebefu6.github.io/learn-asking-right-questions-as-da-with-phoebe/courses/01-why-the-gap-and-the-six-doors.html">the shared session 1</a>.</p>
+    <div class="chip-row">
+      <span class="chip level">🟠 Capstone</span>
+      <span class="chip audience">Bring the sheet, the lineage, the tree</span>
+      <span class="chip audience">No code. A pen and the bench.</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · The run, the brief, the gate</span>
+      <span class="a3" style="flex:5">18-40 · Build-along: the brief she reads</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where we start</h2>
+    </div>
+    <p class="lede">A discovery meeting produces two things: what is in your notes, and what is in her head. The bench in session 3 counted the first. The brief is how the second is fixed in place before it fades, and it is also the first piece of work she sees from you, which makes it the first evidence she has about whether the next eight weeks are worth her time. For an engineer the brief carries one extra weight. Adeline opened with "Our numbers never match. Finance says one thing, the POS says another," and the brief is where you say, in writing and before any job runs, which of those numbers is the one booked and why the other differs. Harbourline and Adeline Tan are constructed, as on every page; the brief you write tonight is for a real request if you have one, and for hers if you do not.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+      <span class="pill">★ Build-along = write it yourself</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> One scored run of the full meeting with your own sheet, a one-page brief ready to send with the lineage as five boxes and "no new pipeline yet" written where she can agree to it, and the eight-row ship gate that says whether it goes out tomorrow morning or needs another hour first.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers the full run</span>
+      <h2>Your meeting, scored against the ladder</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">Open the bench on <a href="03-the-engineers-questions-and-the-bench.html">session 3</a> in a second tab, reset the lower half, and run the whole 45 minutes with your printed sheet beside you. Do not look at the preset transcripts first. When the clock reaches zero, write down four numbers: net value, false beliefs, doors opened, and the value in your notes at minute 20. Then read them against the ladder below, which is the engineer's bank and nobody else's: 24 facts worth 68 points.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn ruler from 0 to 68 points of net value on the data engineer's bank, with marks for the five presets and the ceiling: the technical opener at 15, the efficient interview at 17, two hundred shuffles averaging 27.6 with a range of 5 to 45, Six Doors in printed order at 47, Six Doors tuned for an engineer at 51, and a dashed mark at 62 for a search that can read her fact sheet. An empty teal box labelled your run hangs above the ruler between 27.6 and 47, waiting to be placed. Three bands underneath read: below 27.6 the order is costing you, 27.6 to 47 the doors but not yet the order, 47 and up you walked the corridor. A small clock marks the 45 minutes.">
+        <defs>
+          <filter id="s6aSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="71" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="s6aHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#9A3412" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="s6aAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2A1A12" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .s6aH { font: 800 12px Inter, sans-serif; fill: #2A1A12; }
+          .s6aL { font: 600 12px Inter, sans-serif; fill: #2A1A12; }
+          .s6aS { font: 400 11px Inter, sans-serif; fill: #6B5448; }
+          .s6aB { font: 800 11px Inter, sans-serif; fill: #084C4C; }
+          .s6aV { font: 800 16px Inter, sans-serif; fill: #7C2D12; }
+          .s6aN { font: 400 12px Inter, sans-serif; fill: #6B5448; }
+        </style>
+
+        <text class="s6aH" x="30" y="26">WHERE YOUR RUN LANDS</text>
+        <text class="s6aS" x="200" y="26">net value out of 68 on the engineer's bank · five presets and a ceiling</text>
+
+        <g filter="url(#s6aSk)" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- ruler 0..68 -> x 60..808, 11 px per point -->
+          <rect x="60" y="160" width="748" height="26" rx="4" fill="#FFFFFF"/>
+          <path d="M60 160 L60 186 M170 160 L170 172 M280 160 L280 172 M390 160 L390 172 M500 160 L500 172 M610 160 L610 172 M720 160 L720 172 M808 160 L808 186"/>
+          <!-- bands: 0-27.6 white, 27.6-47 tint, 47-68 hachure -->
+          <rect x="60" y="190" width="304" height="10" rx="3" fill="#FFFFFF"/>
+          <rect x="364" y="190" width="213" height="10" rx="3" fill="#FDF4EE"/>
+          <rect x="577" y="190" width="231" height="10" rx="3" fill="url(#s6aHc)"/>
+          <!-- preset ticks: 15->225 (tall), 17->247, 27.6->364, 47->577, 51->621 -->
+          <path d="M225 100 L225 160 M247 130 L247 160 M364 130 L364 160 M577 130 L577 160 M621 130 L621 160"/>
+          <!-- ceiling, dashed -->
+          <path d="M742 104 L742 186" stroke="#9A3412" stroke-dasharray="5 4"/>
+          <!-- your run: an empty box, dashed drop to the ruler -->
+          <rect x="462" y="62" width="46" height="28" rx="4" transform="rotate(-0.8 485 76)" fill="#E4F3F3" stroke="#0E6B6B"/>
+          <path d="M485 94 L485 156" stroke="#0E6B6B" stroke-dasharray="3 4"/>
+          <!-- the doodle anchor: a clock for the 45 minutes -->
+          <circle cx="840" cy="62" r="18" fill="#FFFFFF"/>
+          <path d="M840 62 L840 50 M840 62 L849 66"/>
+        </g>
+
+        <text class="s6aS" x="60" y="214" text-anchor="middle">0</text>
+        <text class="s6aS" x="808" y="214" text-anchor="middle">68</text>
+        <text class="s6aS" x="219" y="104" text-anchor="end">jargon</text>
+        <text class="s6aV" x="219" y="124" text-anchor="end">15</text>
+        <text class="s6aS" x="253" y="126">fast interview</text>
+        <text class="s6aV" x="253" y="148">17</text>
+        <text class="s6aS" x="370" y="126">shuffle, 5 to 45</text>
+        <text class="s6aV" x="370" y="148">27.6</text>
+        <text class="s6aS" x="571" y="126" text-anchor="end">Six Doors</text>
+        <text class="s6aV" x="571" y="148" text-anchor="end">47</text>
+        <text class="s6aS" x="627" y="126">tuned</text>
+        <text class="s6aV" x="627" y="148">51</text>
+        <text class="s6aB" x="748" y="118">62, needs</text>
+        <text class="s6aB" x="748" y="133">her sheet</text>
+        <text class="s6aB" x="485" y="54" text-anchor="middle">your run</text>
+        <text class="s6aS" x="840" y="98" text-anchor="middle">45 min</text>
+
+        <text class="s6aB" x="60" y="234">below 27.6</text>
+        <text class="s6aS" x="60" y="250">the order is costing you</text>
+        <text class="s6aL" x="364" y="234">27.6 to 47</text>
+        <text class="s6aS" x="364" y="250">the doors, not yet the order</text>
+        <text class="s6aL" x="577" y="234">47 and up</text>
+        <text class="s6aS" x="577" y="250">you walked the corridor</text>
+
+        <text class="s6aN" x="30" y="282">Read false beliefs before net value: the fast interview heard 33 points and five wrong beliefs cost it 16.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the teal box is yours to place; the bands are what each stretch of the ruler usually means on this bank</figcaption>
+    </figure>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Reading your four numbers<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>False beliefs first.</strong> Any number above zero means a leading question slipped through, and each one is a build decision you will get wrong in week six. On this bank there are five to collect, and every one of them is a pipeline design in disguise: "the POS is the source of truth", "pull everything daily", "the vendor API is in use", "finance is simply wrong", "stock lives in the POS". Find the question that recorded it in the transcript, write the open version on your sheet, and carry that version into the real meeting.</p>
+        <p><strong>Doors opened.</strong> Six is the only answer that lets you write a brief without guessing. A shut door is a block of the brief you cannot fill. The fast interview on this bank opens five and leaves success shut, which means it walks out with no test: not one word of "the auditor stops asking", so nothing on the page can be checked against her.</p>
+        <p><strong>Net value against the ladder.</strong> The Six Doors in printed order score 47 blind; tuned for an engineer, with data state opened widest after three quick questions to earn trust, 51. A run in that region means the sheet works. A run near the shuffle's 27.6 means the questions are good and the order is not: usually the system questions came before any trust was earned, or a jargon question cost trust the login question needed later.</p>
+        <p><strong>The 20-minute counter.</strong> The tuned order has 24 points in your notes by minute 20, the printed order 20. The technical opener has nothing, and the fast interview's first 20 minutes net to zero: 16 points heard, 16 lost to five wrong beliefs. If she is called away halfway, that is the meeting you actually had.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The ceiling is not a method<span class="mini">1 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The dashed mark at 62 is what a search over the good questions finds when it is allowed to read her fact sheet first. Its best order opens with "What happens when Priya is away?", a question you cannot ask before you have heard the name Priya. It also puts 34 points in the notes by minute 20. That is the value of knowing the answers in advance, and no interviewer has it. The gap between 51 and 62 is not a target for your sheet; it is a measure of how much a meeting still costs when you walk in not knowing, which is always.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>What the bench cannot see about your run<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The bench scores what you asked and what came back. It does not hear your tone, see whether you looked at her or at your laptop, or notice the moment she leaned forward because a question was about her actual month-end. Those matter, and no widget measures them honestly. The run is a rehearsal for the order and the kinds, not a verdict on you as an interviewer. If you can, run the real meeting next week with a colleague taking notes, and ask them one thing afterwards: when did she start giving longer answers? On the bench that moment has a number, the trust of 3 that the login answer needs; in the room it looks like a pause before she says something she has not told her team.</p>
+      </div>
+    </details>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The rehearsal that found the leading question.</strong> A constructed case. An engineer ran the bench twice before a real discovery meeting about two systems that disagreed. The first run scored well and carried one false belief: "the POS is the source of truth, right?" had slipped onto the sheet as a confirmation meant for the end. Rewritten as "Where does finance's revenue number come from, step by step?" and moved up, the open question produced what the leading one had hidden: card settlements landing two days late, cash banked weekly, refunds that live only in the accounting system. The brief that went out the next morning declared the booked number real and explained the POS against it. The first draft would have declared the opposite, and built a pipeline on it.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers the one-page brief</span>
+      <h2>One page, in her words, sent within 24 hours</h2>
+      <span class="tag concept">6 min live</span>
+    </div>
+    <p class="lede">The brief is not minutes and it is not a design document. It is the meeting handed back to her in a form she can check, correct and forward to finance and the regional GM without rewriting. It has six blocks, each fed by a door, and every sentence in it is either something she said or something you will do. For an engineer, two blocks carry the weight. Block 3 is the lineage as five boxes, with the copy that is declared real marked on it. Block 4 is the first step and the pipeline you are not building yet. If she reads it and says "yes, that is what I meant", the gap from session 1 is closed. If she corrects a block, it was worth sending for that alone.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn single page with six blocks stacked top to bottom: what you told me, in your words, quoting the auditor asked which one was right, I could not tell him; the decision this will serve, finance books revenue by working day five and argues after; every system and which copy is real, the POS, the ledger, three stock sheets and WhatsApp, with a small thumbnail of the lineage as five boxes; what I will build first and what I will not, a written month-end bridge in four outlets and no new pipeline yet, drawn in teal; how we will both know, the auditor stops asking and Priya's Monday takes one hour; who does what next week, Priya and I, one hour, last month's export, to confirm. On the left, six numbered door badges connect each block to the door that fed it: outcome, decision, current way and data state, constraints, success, partnership. On the right, a clock reads within 24 hours and a line leads from the page to her phone.">
+        <defs>
+          <filter id="s6bSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="83" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="s6bHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#9A3412" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="s6bAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2A1A12" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .s6bH { font: 800 12px Inter, sans-serif; fill: #2A1A12; }
+          .s6bL { font: 600 12px Inter, sans-serif; fill: #2A1A12; }
+          .s6bS { font: 400 11px Inter, sans-serif; fill: #6B5448; }
+          .s6bB { font: 800 11px Inter, sans-serif; fill: #084C4C; }
+          .s6bW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .s6bN { font: 400 12px Inter, sans-serif; fill: #6B5448; }
+        </style>
+
+        <text class="s6bH" x="30" y="26">THE BRIEF: SIX BLOCKS, EACH FED BY A DOOR</text>
+
+        <g filter="url(#s6bSk)" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- the page -->
+          <rect x="190" y="44" width="470" height="328" rx="4" transform="rotate(-0.3 425 208)" fill="#FFFFFF"/>
+          <!-- six blocks, 46 tall, 6 gap, from y=56 -->
+          <rect x="206" y="56" width="438" height="46" rx="6" fill="#FDF4EE"/>
+          <rect x="206" y="108" width="438" height="46" rx="6" fill="#FDF4EE"/>
+          <rect x="206" y="160" width="438" height="46" rx="6" fill="#FDF4EE"/>
+          <rect x="206" y="212" width="438" height="46" rx="6" fill="#E4F3F3" stroke="#0E6B6B"/>
+          <rect x="206" y="264" width="438" height="46" rx="6" fill="#FDF4EE"/>
+          <rect x="206" y="316" width="438" height="46" rx="6" fill="#FDF4EE"/>
+          <!-- block 3 thumbnail: the lineage as five boxes, no labels -->
+          <rect x="506" y="177" width="18" height="12" rx="2" fill="url(#s6bHc)"/>
+          <rect x="532" y="177" width="18" height="12" rx="2" fill="url(#s6bHc)"/>
+          <rect x="558" y="177" width="18" height="12" rx="2" fill="url(#s6bHc)"/>
+          <rect x="584" y="177" width="18" height="12" rx="2" fill="url(#s6bHc)"/>
+          <rect x="610" y="177" width="18" height="12" rx="2" fill="#FFFFFF"/>
+          <path d="M524 183 L532 183 M550 183 L558 183 M576 183 L584 183 M602 183 L610 183" stroke-width="1.5"/>
+          <!-- door badges on the left -->
+          <circle cx="150" cy="79" r="11" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="150" cy="131" r="11" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="150" cy="183" r="11" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="150" cy="235" r="11" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="150" cy="287" r="11" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="150" cy="339" r="11" fill="#9A3412" stroke="#9A3412"/>
+          <path d="M164 79 L200 79 M164 131 L200 131 M164 183 L200 183 M164 235 L200 235 M164 287 L200 287 M164 339 L200 339" stroke="#E2CFC3"/>
+          <!-- clock, then the page's way to her phone -->
+          <circle cx="760" cy="120" r="28" fill="#FFFFFF"/>
+          <path d="M760 120 L760 100 M760 120 L775 128"/>
+          <path d="M666 190 C700 190 728 198 744 214" marker-end="url(#s6bAr)"/>
+          <rect x="730" y="224" width="56" height="96" rx="10" fill="#FFFFFF"/>
+          <path d="M744 244 L772 244 M744 258 L772 258 M744 272 L764 272" stroke="#E2CFC3"/>
+        </g>
+
+        <text class="s6bW" x="150" y="83" text-anchor="middle">1</text>
+        <text class="s6bW" x="150" y="135" text-anchor="middle">2</text>
+        <text class="s6bW" x="150" y="187" text-anchor="middle">3</text>
+        <text class="s6bW" x="150" y="239" text-anchor="middle">4</text>
+        <text class="s6bW" x="150" y="291" text-anchor="middle">5</text>
+        <text class="s6bW" x="150" y="343" text-anchor="middle">6</text>
+        <text class="s6bS" x="30" y="83">outcome</text>
+        <text class="s6bS" x="30" y="135">decision</text>
+        <text class="s6bS" x="30" y="181">current way,</text>
+        <text class="s6bS" x="30" y="195">data state</text>
+        <text class="s6bS" x="30" y="239">constraints</text>
+        <text class="s6bS" x="30" y="291">success</text>
+        <text class="s6bS" x="30" y="343">partnership</text>
+
+        <text class="s6bB" x="218" y="76">WHAT YOU TOLD ME, IN YOUR WORDS</text>
+        <text class="s6bS" x="218" y="91">"the auditor asked which one was right. I could not tell him."</text>
+        <text class="s6bL" x="218" y="128">The decision this will serve</text>
+        <text class="s6bS" x="218" y="143">finance books revenue by working day five, and argues after</text>
+        <text class="s6bL" x="218" y="180">Every system, and which copy is real</text>
+        <text class="s6bS" x="218" y="195">POS, ledger, three stock sheets, WhatsApp</text>
+        <text class="s6bL" x="218" y="232">What I will build first, and what I will not</text>
+        <text class="s6bS" x="218" y="247">a written month-end bridge, four outlets; no new pipeline yet</text>
+        <text class="s6bL" x="218" y="284">How we will both know</text>
+        <text class="s6bS" x="218" y="299">the auditor stops asking; Priya's Monday takes one hour</text>
+        <text class="s6bL" x="218" y="336">Who does what next week</text>
+        <text class="s6bS" x="218" y="351">Priya and I, one hour, last month's export (to confirm)</text>
+
+        <text class="s6bB" x="760" y="78" text-anchor="middle">within 24 hours</text>
+        <text class="s6bS" x="758" y="340" text-anchor="middle">read on her phone</text>
+
+        <text class="s6bN" x="30" y="398">Block 4 is teal: the engineer's block, the first step and the pipeline it says not to build yet.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - block 1 is the only one in her words alone, and block 4 is the one that most needs her yes</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The six blocks, and the rule for each<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>1 · What you told me, in your words.</strong> Two or three sentences she said, quoted. Not your summary. Adeline's are already on your sheet from the first minute: "Our numbers never match. Finance says one thing, the POS says another, and last month the auditor asked which one was right. I could not tell him." That last sentence is the whole request. If the tune you heard is not the tune she was humming, she will say so here, and it costs one email instead of eight weeks.</p>
+        <p><strong>2 · The decision this will serve.</strong> The action, the person, the deadline, from door 2. One line. At Harbourline: finance posts revenue by the fifth working day, and when the POS disagrees they book finance's number and argue afterwards. If you cannot write it, the brief says "I still need to understand who books this and by when" rather than inventing it.</p>
+        <p><strong>3 · Every system, and which copy is real.</strong> The lineage from session 2, as five boxes: the till, the bank settlement, the bookkeeper's ledger, the monthly export, finance's booked number. Under it, one line for each place the two numbers part company, and one line saying which copy is declared real and who declared it. End with one question: "which box is wrong?"</p>
+        <p><strong>4 · What I will do first, and what I will not.</strong> The pilot from session 5, the winner on its grid: a written month-end bridge that declares finance's booked number the real one and explains the POS against it, drawn from the export the bookkeeper already sends, needing no budget and no admin login. Then one sentence naming what you are deliberately not doing yet: no new pipeline yet. To a person who said "our numbers never match", an engineer promising not to connect the systems sounds strange, which is exactly why it has to be said out loud, with the reason. It is the line that most needs her agreement.</p>
+        <p><strong>5 · How we will both know.</strong> Her success test, in her words: the auditor stops asking, and Priya's Monday takes one hour instead of six. Not a row count, not a refresh time, not a green job.</p>
+        <p><strong>6 · Who does what next week.</strong> Names, a day, a time, one task each. Rob Fitzpatrick's test in The Mom Test, as reported, is whether the other side committed something: time, a name, an introduction. This block is where her commitment is written down so it cannot quietly lapse, and any commitment your meeting never asked for is written as "to confirm with you".</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Why 24 hours, and why one page<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Within a day she still remembers what she meant, so a correction is cheap and specific. After a week she remembers that you came by, and a brief arriving then reads as a proposal to be evaluated rather than a record to be checked. No study is quoted for the 24 hours; it is a working norm, and the reason is the one above.</p>
+        <p>One page because she runs 38 outlets and will read it between two of them. Two pages is a document; a document goes into a folder to be read later; later is after the month-end. If block 3 wants the full lineage with every login and read frequency on it, that goes in an attachment she can ignore, and the page keeps the five boxes.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>What the brief must never contain<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A word from the jargon column of session 4: no change data capture, no SLA, no medallion layer, no idempotency. A number you have not seen yet stated as if you had. A timeline longer than the date she gave you, or a date she never gave you stated as if she had. A fact she told you in confidence, most importantly the one about Kenneth leaving in January. It shapes block 4 completely: the bridge runs on the bookkeeper's monthly export, the second step on Priya's own access, and the vendor API waits for Q1 with the line "needs an admin login we can keep". But it goes into your plan and not into a document she may forward to the team she has not told. The brief says only what the plan needs: no step depends on one person's login. It is hers to forward. Write it as if it will be.</p>
+      </div>
+    </details>
+
+    <div class="tryrow" data-fn="wordcount" data-multiline="1" data-title="Write your not-yet line" data-hint="For a request you hold, write the sentence for block 4 that names the thing you are deliberately not building yet, and the reason, in words the business person already uses. No system name they would have to ask about. One or two sentences." data-seed="" data-cta="Count it"></div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The line that got forwarded.</strong> A constructed case. An engineer sent a brief whose block 4 said, in plain words, "no new pipeline yet: first we write down why finance and the till differ, for four outlets, and agree it". The operations director replied in one line: "Yes. Please send block 4 to finance as well." The sentence the engineer had been most nervous about, the one that sounded like refusing the job, turned out to be the one she needed most, because it was the first time anyone had told finance that the gap had a reason rather than a culprit. The pipeline came later, carrying a number both sides had already agreed to disagree about, in writing.</p>
+    </div>
+  </section>
+
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · the final scorecard</span>
+      <h2>The ship gate for an engineer's brief</h2>
+      <span class="tag concept">4 min live</span>
+    </div>
+    <p class="lede">Eight rows, each scored 0, 1 or 2 against your own brief. This gate is strict on purpose: a brief that half-declares which copy is real is read by the business as a brief that has declared it, and the disagreement it leaves opens again at the next month-end, faster, because by then something is automated. Anything under 16 of 16 gets another hour before it goes out, and every row names the session to go back to.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A hand-drawn draft page on the left feeds a grid of eight gate rows in two columns, each row with a badge naming the session to go back to: her words in blocks 1 and 5, session 1; every system a sale touches, session 2; one copy declared real, session 2; the timing gap written first, session 5; no step on one login, session 5; no unconfirmed leading question, session 3; passes the read-aloud test, session 4; names, a day and a task each, session 5. From the grid a short line leads to a teal box reading 16 of 16, it goes out, within 24 hours. A return line runs from under the grid back to the draft: any row under 2 goes back to the session in its badge for another hour, then is scored again.">
+        <defs>
+          <filter id="s6cSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="97" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="s6cHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#9A3412" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="s6cAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2A1A12" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .s6cH { font: 800 12px Inter, sans-serif; fill: #2A1A12; }
+          .s6cL { font: 600 12px Inter, sans-serif; fill: #2A1A12; }
+          .s6cS { font: 400 11px Inter, sans-serif; fill: #6B5448; }
+          .s6cW { font: 800 12px Inter, sans-serif; fill: #FFFFFF; }
+          .s6cN { font: 400 12px Inter, sans-serif; fill: #6B5448; }
+        </style>
+
+        <text class="s6cH" x="30" y="26">EIGHT ROWS, 0 TO 2 EACH: 16 OF 16, OR ANOTHER HOUR</text>
+        <text class="s6cS" x="30" y="44">each row scored against your own brief · the badge is the session to go back to</text>
+
+        <g filter="url(#s6cSk)" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- the draft: the doodle anchor, a page -->
+          <rect x="30" y="72" width="80" height="98" rx="3" transform="rotate(-0.8 70 121)" fill="#FFFFFF"/>
+          <path d="M42 92 L98 92 M42 106 L98 106 M42 120 L90 120 M42 134 L98 134 M42 148 L82 148" stroke="#E2CFC3"/>
+          <path d="M114 121 L144 121" marker-end="url(#s6cAr)"/>
+          <!-- eight gate rows, two columns of four -->
+          <rect x="150" y="60" width="262" height="36" rx="5" transform="rotate(-0.4 281 78)" fill="#FDF4EE"/>
+          <rect x="150" y="104" width="262" height="36" rx="5" transform="rotate(0.3 281 122)" fill="#FDF4EE"/>
+          <rect x="150" y="148" width="262" height="36" rx="5" transform="rotate(-0.3 281 166)" fill="#FDF4EE"/>
+          <rect x="150" y="192" width="262" height="36" rx="5" transform="rotate(0.4 281 210)" fill="#FDF4EE"/>
+          <rect x="428" y="60" width="262" height="36" rx="5" transform="rotate(0.3 559 78)" fill="#FDF4EE"/>
+          <rect x="428" y="104" width="262" height="36" rx="5" transform="rotate(-0.4 559 122)" fill="#FDF4EE"/>
+          <rect x="428" y="148" width="262" height="36" rx="5" transform="rotate(0.4 559 166)" fill="#FDF4EE"/>
+          <rect x="428" y="192" width="262" height="36" rx="5" transform="rotate(-0.3 559 210)" fill="#FDF4EE"/>
+          <!-- session badges -->
+          <circle cx="392" cy="78" r="10" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="392" cy="122" r="10" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="392" cy="166" r="10" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="392" cy="210" r="10" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="670" cy="78" r="10" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="670" cy="122" r="10" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="670" cy="166" r="10" fill="#9A3412" stroke="#9A3412"/>
+          <circle cx="670" cy="210" r="10" fill="#9A3412" stroke="#9A3412"/>
+          <!-- all 2s: out it goes -->
+          <path d="M694 110 L718 110" marker-end="url(#s6cAr)"/>
+          <rect x="724" y="84" width="136" height="52" rx="6" transform="rotate(0.5 792 110)" fill="#0E6B6B" stroke="#0E6B6B"/>
+          <!-- any row under 2: back to the draft -->
+          <path d="M420 232 L420 250 L70 250 L70 178" stroke="#9A3412" marker-end="url(#s6cAr)"/>
+        </g>
+
+        <text class="s6cL" x="70" y="62" text-anchor="middle">your draft</text>
+        <text class="s6cL" x="162" y="83">Her words, blocks 1 and 5</text>
+        <text class="s6cL" x="162" y="127">Every system a sale touches</text>
+        <text class="s6cL" x="162" y="171">One copy declared real</text>
+        <text class="s6cL" x="162" y="215">Timing gap written first</text>
+        <text class="s6cL" x="440" y="83">No step on one login</text>
+        <text class="s6cL" x="440" y="127">No unconfirmed leading one</text>
+        <text class="s6cL" x="440" y="171">Passes the read-aloud test</text>
+        <text class="s6cL" x="440" y="215">Names, a day, a task each</text>
+        <text class="s6cW" x="392" y="82" text-anchor="middle">1</text>
+        <text class="s6cW" x="392" y="126" text-anchor="middle">2</text>
+        <text class="s6cW" x="392" y="170" text-anchor="middle">2</text>
+        <text class="s6cW" x="392" y="214" text-anchor="middle">5</text>
+        <text class="s6cW" x="670" y="82" text-anchor="middle">5</text>
+        <text class="s6cW" x="670" y="126" text-anchor="middle">3</text>
+        <text class="s6cW" x="670" y="170" text-anchor="middle">4</text>
+        <text class="s6cW" x="670" y="214" text-anchor="middle">5</text>
+        <text class="s6cW" x="792" y="106" text-anchor="middle">16 of 16:</text>
+        <text class="s6cW" x="792" y="124" text-anchor="middle">it goes out</text>
+        <text class="s6cS" x="792" y="158" text-anchor="middle">within 24 hours</text>
+
+        <text class="s6cN" x="110" y="274">any row under 2: back to the session in its badge, another hour, then score again</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the teal box is the only way out, and the return line is not a failure; it is the hour that stops a half-declared copy reaching finance</figcaption>
+    </figure>
+
+    <div class="scorecard" data-title="The engineer's brief ship gate" data-msgs="Sixteen of sixteen. She can read it between two outlets, correct it in one reply, and forward it to finance without rewriting; it goes out.|Close, and not yet. Any row under 2 is a sentence she will read differently from how you meant it, and on this brief the usual one is the declared copy; fix it before sending.|Half the gate is open. The rows at 0 are usually the declared copy and the timing gap; both take ten minutes from your lineage, and they are the two that stop a pipeline moving the disagreement faster.|Do not send this yet. Go back to the session each low row names, and rewrite that block before anything else." data-foot="Score every row 0 for not yet, 1 for partly, 2 for solid. Anything under 16 of 16 gets another hour, because a half-declared copy is read as a declared one by the person who books the number. A row at 0 or 1 names the session to go back to.">
+      <div class="sc-row"><div class="sc-q">Block 1 quotes her own words, two or three sentences, and block 5 is her test in her words; none of either is my summary of what she meant. <em>Session 1. "I could not tell him" is the request. "Improve data consistency across systems" is you tapping, and she cannot correct what she never sees.</em></div></div>
+      <div class="sc-row"><div class="sc-q">Block 3 names every system one sale touches, till to bank to ledger to export to the booked number, and asks her which box is wrong. <em>Session 2. Every hand-off is a place a number can change, and a lineage she can correct is worth more than a schema she cannot read.</em></div></div>
+      <div class="sc-row"><div class="sc-q">Block 3 says which copy of each number is declared real and who declared it, and where nobody has, it says so and asks. <em>Sessions 2 and 5. Three stock sheets with one on Priya's laptop is three copies and no real one until Adeline names it.</em></div></div>
+      <div class="sc-row"><div class="sc-q">Block 4's first step writes the timing gap down in sentences before anything is automated, and names the pipeline I am deliberately not building yet. <em>Session 5. Card settlements two days late, cash banked weekly, refunds only in accounting: a pipeline built before those three sentences delivers the two percent every morning.</em></div></div>
+      <div class="sc-row"><div class="sc-q">No step in blocks 4 and 6 depends on one person's login, and nothing needs budget before Q1. <em>Sessions 2 and 5. The bridge runs on the bookkeeper's monthly export and the second step on Priya's own access; the vendor API waits for an admin login that can be kept.</em></div></div>
+      <div class="sc-row"><div class="sc-q">Nothing in my notes, and nothing in the brief, came from a leading question I did not later confirm with an open one. <em>Session 3. On the bench the fast interview recorded five wrong beliefs and scored 17 against 47 for the doors in order; "the POS is the source of truth" alone would reverse block 3.</em></div></div>
+      <div class="sc-row"><div class="sc-q">Every sentence passes the read-aloud test: no word she would have to ask about. <em>Session 4. Jargon costs twice on the bench, in minutes and in trust, and the technical opener scored 15; in a brief it costs the correction she never makes because she did not understand the line.</em></div></div>
+      <div class="sc-row"><div class="sc-q">Block 6 has names, a day, a time and one task each, her side of it agreed rather than assumed, and every line my meeting never reached marked "to confirm with you". <em>Session 5. The tuned run never asked for Priya's two hours or the board and auditor dates; a partner who was never asked is not a partner.</em></div></div>
+    </div>
+
+    <div class="callout example">
+      <span class="ex-pill">Real world</span>
+      <p><strong>The row that scored 1.</strong> A constructed case. An engineer scored a draft at 15 and was tempted to send it anyway. The row at 1 was the declared copy: block 3 said "revenue: POS and ledger" without saying which one was booked. An hour later it read "the real number is the one finance books by day five; the POS figure is explained against it, line by line". Nothing else changed. The reply the next morning was one the vaguer draft could never have drawn, because it gave her nothing to agree to: "Yes, that is the number we book. Nobody has written that down before." A declared copy is a sentence she can say yes to; "POS and ledger" is a sentence she can only nod at.</p>
+    </div>
+  </section>
+
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>Write the brief she reads tomorrow morning</h2>
+      <span class="tag demo">★ 22 min · everyone writes</span>
+    </div>
+    <p class="lede">Six blocks, one page, built from the three artifacts you already have: the Six Doors sheet from session 1, the lineage from session 2, the tree, grid and pilot from session 5. Nothing new is invented tonight. Every line is either something she said or something you will do, and the worked example below is Adeline's, written from her printed fact sheet and from what the tuned 45 minutes actually heard. Where the tuned run never reached a fact, the example says "to confirm with you", because in a real meeting that fact would not be in your notes.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three hand-drawn artifacts on the left, the Six Doors sheet from session 1 feeding blocks 1, 2 and 5, the lineage in five boxes from session 2 feeding block 3, and the tree, grid and pilot from session 5 feeding blocks 4 and 6, each with a line converging on a single teal page on the right labelled the brief. On the page, block 3 is drawn as five small boxes in a row, the last one white for the booked number, and block 4 reads first, and no new pipeline yet.">
+        <defs>
+          <filter id="s6dSk" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="103" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+          <pattern id="s6dHc" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(-38)"><line x1="0" y1="0" x2="0" y2="7" stroke="#9A3412" stroke-width="1" opacity=".5"/></pattern>
+          <marker id="s6dAr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#2A1A12" stroke-width="1.6" stroke-linecap="round"/></marker>
+        </defs>
+        <style>
+          .s6dH { font: 800 12px Inter, sans-serif; fill: #2A1A12; }
+          .s6dL { font: 600 12px Inter, sans-serif; fill: #2A1A12; }
+          .s6dS { font: 400 11px Inter, sans-serif; fill: #6B5448; }
+          .s6dB { font: 800 11px Inter, sans-serif; fill: #084C4C; }
+          .s6dN { font: 400 12px Inter, sans-serif; fill: #6B5448; }
+        </style>
+
+        <text class="s6dH" x="30" y="26">THREE THINGS YOU ALREADY HAVE, ONE PAGE SHE READS</text>
+
+        <g filter="url(#s6dSk)" fill="none" stroke="#2A1A12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="40" y="48" width="200" height="46" rx="4" transform="rotate(-0.8 140 71)" fill="#FDF4EE"/>
+          <rect x="40" y="110" width="200" height="46" rx="4" transform="rotate(0.6 140 133)" fill="#FFFFFF"/>
+          <rect x="40" y="172" width="200" height="46" rx="4" transform="rotate(-0.5 140 195)" fill="#FDF4EE"/>
+          <path d="M246 71 C350 71 410 84 470 92" marker-end="url(#s6dAr)"/>
+          <path d="M246 133 C350 133 410 128 470 126" marker-end="url(#s6dAr)"/>
+          <path d="M246 195 C350 195 410 172 470 160" marker-end="url(#s6dAr)"/>
+          <!-- the brief: the doodle anchor, and the one thing -->
+          <rect x="480" y="48" width="280" height="180" rx="4" transform="rotate(0.4 620 138)" fill="#E4F3F3" stroke="#0E6B6B"/>
+          <path d="M496 80 L744 80 M496 108 L744 108 M496 136 L744 136 M496 164 L744 164 M496 192 L744 192" stroke="#E2CFC3"/>
+          <!-- block 3 as five boxes -->
+          <rect x="600" y="116" width="20" height="12" rx="2" fill="url(#s6dHc)"/>
+          <rect x="627" y="116" width="20" height="12" rx="2" fill="url(#s6dHc)"/>
+          <rect x="654" y="116" width="20" height="12" rx="2" fill="url(#s6dHc)"/>
+          <rect x="681" y="116" width="20" height="12" rx="2" fill="url(#s6dHc)"/>
+          <rect x="708" y="116" width="20" height="12" rx="2" fill="#FFFFFF"/>
+          <path d="M620 122 L627 122 M647 122 L654 122 M674 122 L681 122 M701 122 L708 122" stroke-width="1.5"/>
+        </g>
+
+        <text class="s6dL" x="54" y="68">Six Doors sheet</text>
+        <text class="s6dS" x="54" y="83">session 1 · blocks 1, 2, 5</text>
+        <text class="s6dL" x="54" y="130">Lineage, five boxes</text>
+        <text class="s6dS" x="54" y="145">session 2 · block 3</text>
+        <text class="s6dL" x="54" y="192">Tree, grid and pilot</text>
+        <text class="s6dS" x="54" y="207">session 5 · blocks 4, 6</text>
+        <text class="s6dB" x="496" y="70">THE BRIEF</text>
+        <text class="s6dS" x="496" y="98">1 your words · 2 the decision</text>
+        <text class="s6dS" x="496" y="126">3 the lineage</text>
+        <text class="s6dS" x="496" y="154">4 first, and no new pipeline yet</text>
+        <text class="s6dS" x="496" y="182">5 how we know · 6 next week</text>
+        <text class="s6dS" x="496" y="214">one page, read between two outlets</text>
+
+        <text class="s6dN" x="30" y="254">Nothing new is invented tonight. Every line was already on one of the three pages on the left.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - if a block has no line feeding it, a door was left shut and the brief should say so rather than guess</figcaption>
+    </figure>
+
+    <div class="steps">
+      <div class="step">
+        <p><strong>Block 1, her words.</strong> Open your sheet and copy two or three of her sentences exactly. Pick the ones closest to the outcome, not the request. If your sheet has no quote in her words, that is the first thing to fix, and the brief should ask rather than guess.</p>
+        <div class="prompt-box good"><span class="label">★ Step 1 · what you told me</span>What you told me, in your words:
+"Our numbers never match. Finance says one thing, the POS says another."
+"Last month the auditor asked which one was right."
+"I could not tell him."</div>
+      </div>
+      <div class="step">
+        <p><strong>Blocks 2 and 3, the decision and the lineage.</strong> One line for the decision. Then the lineage as five boxes, one line each, with the place the two numbers part company written beside the box where it happens. Under it, one line per other copy, one line saying which copy is declared real, and the question.</p>
+        <div class="prompt-box good"><span class="label">★ Step 2 · decision and lineage</span>The decision this will serve:
+Month-end revenue, booked by finance by the fifth working day. When the POS
+disagrees, finance's number is booked and the difference argued afterwards.
+
+Where your revenue number passes through today, in five boxes:
+  1  the till: one cloud POS, a CSV per outlet
+  2  the bank: cards settle two days late, cash is banked weekly
+  3  the ledger: kept by the bookkeeper in Kuala Lumpur; refunds live only here
+  4  the export: once a month, as the bookkeeper's contract allows
+  5  finance's number: booked by the fifth working day
+The POS side: 38 files every Monday, merged by Priya with a 2019 macro.
+Stock: three versions of the spreadsheet; none declared real yet.
+Product codes: different in Singapore and Malaysia; nobody owns the list.
+
+Real copy for revenue: finance's booked number. The POS figure is explained
+against it, not booked. Is that right?
+Which box is wrong?</div>
+      </div>
+      <div class="step">
+        <p><strong>Block 4, first and not yet.</strong> The winner from session 5's grid in one or two sentences, then the runner-up's first step as the second, then one sentence naming what you are not building, with the reason in her words. The first step must need no budget this quarter and no step may depend on one person's login. Your notes say why; the brief does not.</p>
+        <div class="prompt-box good"><span class="label">★ Step 3 · what I will do first</span>What I will do first:
+A written month-end bridge for four outlets, from the export the bookkeeper
+already sends each month: finance's booked number, the POS number, and each
+gap between them named in a sentence (card settlements two days behind the
+till, cash banked weekly, refunds that only the ledger sees). Whatever is left
+is marked "not yet explained". It needs no budget, and no step depends on one
+person's login.
+
+Second, once you and finance agree the bridge: Priya's Monday export for the
+same four outlets, on her own access, with every hand fix written down.
+
+What I will not build yet:
+A new pipeline. Not until finance and the POS agree in writing on why they
+differ, because a pipeline built first would deliver the two percent every
+morning instead of once a month.</div>
+      </div>
+      <div class="step">
+        <p><strong>Blocks 5 and 6, how we know and who does what.</strong> Her test in her words. Names, a day, a time and one task each. Anything the meeting never reached is written as a proposal to confirm, never as a fact she gave you.</p>
+        <div class="prompt-box good"><span class="label">★ Step 4 · the test and next week</span>How we will both know:
+The auditor stops asking, and Priya's Monday takes one hour instead of six.
+You will see both without opening anything I build.
+
+Who does what next week:
+- Priya and me, Tuesday 10:00, one hour: last month's export, four outlets
+  [to confirm with you: can Priya give this two hours a week?]
+- You: pick the four pilot outlets by Friday
+- Me: the first draft of the bridge, for Priya to check line by line
+
+Dates: when does this next have to be shown upward, and when is the
+auditor's answer due? [to confirm with you]</div>
+      </div>
+      <div class="step">
+        <p><strong>Read it on your phone, then score it.</strong> Send the draft to yourself, read it standing up, and run it through the eight-row gate above. Anything under 16 gets fixed before it is sent. Then send it, within 24 hours of the meeting, with a short covering note that asks the two questions your 45 minutes did not reach.</p>
+        <div class="prompt-box good"><span class="label">★ Step 5 · the covering note</span>Subject: What I heard on Thursday, and the first step
+
+Hi Adeline, here is what I understood from our meeting, on one page. The part
+I most want you to correct is the first block: is that what you meant? In the
+third, which box is wrong? And in the fourth, "no new pipeline yet" is the line
+I most need your agreement on.
+
+Two things I did not get to ask: when is the next date you have to show
+something upward, and who on your side could spend two hours a week with me?</div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>The reply is the second meeting.</strong> Whatever she corrects is the most valuable fact you will get this month, because it is the one you would otherwise have built wrong, and for an engineer it is usually a box in block 3. Put it straight into the lineage, the tree or the grid, and send a one-line thank-you that says what changed.</p>
+    </div>
+  </section>
+
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>After tonight</h2>
+      <span class="tag exercise">1 week</span>
+    </div>
+    <ol>
+      <li><strong>Run the real meeting.</strong> Take your sheet to the real request, walk the doors with data state opened widest once trust is earned, and send the brief within 24 hours. Score it on the gate before it goes.</li>
+      <li><strong>Log the reply.</strong> Write down every correction she made, and which block it was in. Block 1 corrections mean you heard the request and missed the tune; block 3 corrections mean a box on the lineage was guessed; a correction to the declared copy means nobody had declared it, and now somebody has.</li>
+      <li><strong>Re-run the bench</strong> with the question you would now ask first, and compare the score, the false beliefs and the 20-minute counter with your session 3 run. The gap is what five sessions bought.</li>
+      <li><strong>Teach one teach-back line</strong> to a colleague on the data side, and ask them to use it in their next meeting. "A file that exists three times has no real copy until someone declares one" is a good first choice. A framework is only a framework once two people use it the same way.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and session 6 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · Your run on the bench scores 44 with two false beliefs. A colleague's scores 40 with none. Whose meeting was better, and what do you do next?</p>
+      <button class="qopt" type="button">A · Yours, because net value is the headline number</button>
+      <button class="qopt" type="button">B · Your colleague's, because each false belief is a build decision you will get wrong in week six; find both leading questions in the transcript, rewrite each as an open question, and move them earlier on the sheet before the real meeting</button>
+      <button class="qopt" type="button">C · Neither, because the bench cannot measure a real meeting</button>
+      <button class="qopt" type="button">D · They are the same, because the difference is within the shuffle's range</button>
+      <p class="qwhy">Read false beliefs before net value. The fast interview hears 33 points on this bank, and its five false beliefs cost 16, leaving 17. "The POS is the source of truth" alone would reverse block 3 and put a pipeline on the wrong copy.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · She opened with "Our numbers never match." Why does block 4 say "no new pipeline yet"?</p>
+      <button class="qopt" type="button">A · Because there is no budget this quarter, and a pipeline always needs one</button>
+      <button class="qopt" type="button">B · Because the vendor API has never been used, so no pipeline can be built</button>
+      <button class="qopt" type="button">C · Because the two percent is mostly timing, card settlements two days late and cash banked weekly, plus refunds only the ledger sees; a pipeline built before that gap is written down and one copy declared real delivers the disagreement every morning, so the written bridge comes first, and the line needs her yes</button>
+      <button class="qopt" type="button">D · Because an engineer should always propose the cheapest option first</button>
+      <p class="qwhy">The line is not caution for its own sake. It is the order the grid in session 5 chose: declare, write, then automate. Saying it out loud to a person who asked for the numbers to match is what makes it hers to agree to rather than a surprise in week three.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="3">
+      <p class="qtext">3 · Once trust was high, Adeline told you that Kenneth, the only IT person with the only POS admin login, is leaving in January, and that she has not told the team. Where does that fact go?</p>
+      <button class="qopt" type="button">A · Into block 3, because a login is part of the data state</button>
+      <button class="qopt" type="button">B · Nowhere, because it was said in confidence and does not change the plan</button>
+      <button class="qopt" type="button">C · Into the covering note, so she knows you heard it</button>
+      <button class="qopt" type="button">D · Into your plan, where it shapes block 4 completely: the bridge runs on the bookkeeper's monthly export, the second step on Priya's own access, the vendor API waits for an admin login that can be kept; the brief itself says only that no step depends on one person's login</button>
+      <p class="qwhy">The fact shapes the work and does not appear in the document. Write the brief as if it will be forwarded, because it will be, to finance and to Priya; a confidence that surfaces in a forwarded brief costs the trust of 3 that produced it.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">The preset scores the run is read against</span><span class="note">Session 3's bench, re-run in node on the printed bank file for this page: technical opener 15, efficient interview 17 (33 heard, 16 lost to five false beliefs), 200 shuffles 27.6 (5 to 45), Six Doors 47, tuned 51; after 20 minutes 0, 0, about 14, 20 and 24. The ceiling of 62, 34 by minute 20, is what a search finds when it reads her fact sheet. The ordering and the mechanism are the finding, never the numbers as facts about a real business</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">What the tuned 45 minutes never heard</span><span class="note">Read from the same run's log: the tuned order ends on the limits question and never asks for the upward date or Priya's two hours, so the worked brief marks the board and auditor dates and Priya's time "to confirm with you"</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">A conversation went somewhere if the other side committed something</span><span class="note">Rob Fitzpatrick, The Mom Test, self-published, 2013; reported from summaries. Block 6 is that test written down</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">The written bridge as block 4's first step</span><span class="note">The winner on session 5's grid, 504 multiplied and 8.0 averaged, with the export as runner-up; those digits are the engineer's written judgement, and whether ICE multiplies or averages is contested</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">The 24-hour norm and the one-page rule</span><span class="note">Working norms, not research findings. No study is quoted for either, and the reasons given are the ones on the page</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Harbourline, Adeline Tan, Kenneth, Priya, the worked brief and the three stories</span><span class="note">Constructed. The worked brief is written from her printed fact sheet and is an example, not a template to copy</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Every fact on this page, and its verification tier, is recorded in the course's source map.</p>
+  </section>
+
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 6 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>Read your run in order</b><span>False beliefs, doors, net value, the 20-minute counter. Two false beliefs outweigh four points.</span></div>
+      <div class="cheat-item"><b>Six blocks</b><span>Her words · the decision · the lineage · first and not yet · how we know · who does what.</span></div>
+      <div class="cheat-item"><b>Block 3 declares the copy</b><span>Five boxes, where the numbers part company, and which copy is real and who said so.</span></div>
+      <div class="cheat-item"><b>Say what you will not build</b><span>"No new pipeline yet" is the line that most needs her agreement.</span></div>
+      <div class="cheat-item"><b>Confidences shape, never appear</b><span>A login that leaves in January decides block 4. The brief says only: no step depends on one login.</span></div>
+      <div class="cheat-item"><b>16 of 16, or another hour</b><span>A half-declared copy is read as a declared one by the person who books the number.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Where to next</span>
+    <p>The same corridor, the same company and the same bench run for three other roles, each opening a different door widest. A data analyst starts at the decision: who does what with the number, and by when, in <a href="https://phoebefu6.github.io/learn-asking-right-questions-as-da-with-phoebe/">Asking the Right Questions as a Data Analyst ↗</a>. A data scientist starts at the outcome: what exactly to predict and what a wrong guess costs, in <a href="https://phoebefu6.github.io/learn-asking-right-questions-as-ds-with-phoebe/">as a Data Scientist ↗</a>. An AI developer starts at the current way: the human workflow today, the error you can tolerate and who checks the output, in <a href="https://phoebefu6.github.io/learn-asking-right-questions-as-ai-with-phoebe/">as an AI Developer ↗</a>. Everything else on the shelf is at <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a>.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Session 6 of 6 · learn-asking-right-questions-as-de-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="05-three-projects-starting-with-one-real-copy.html">← Prev: Three projects, starting with one real copy</a> &nbsp;·&nbsp; <a href="../index.html">Course home</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>
